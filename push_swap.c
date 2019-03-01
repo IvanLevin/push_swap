@@ -1,5 +1,23 @@
 #include "push_swap.h"
 
+static void free_struct(t_swap *swap)
+{
+	free(swap->stack_a);
+	free(swap->stack_b);
+	free(swap->a_check);
+	free(swap->b_check);
+}
+
+static void	initialize_swap(t_swap *swap)
+{
+	swap->stack_a = 0;
+	swap->stack_b = 0;
+	swap->a_check = 0;
+	swap->b_check = 0;
+	swap->len = 0;
+	swap->pivot = 0;
+}
+
 static	int	mem_allocation(t_swap *swap)
 {
 	int	i;
@@ -29,8 +47,10 @@ void	push_swap(int argc, char **argv)
 	int 	i;
 	int 	j;
 
+
 	if(!(swap = (t_swap *)malloc(sizeof(t_swap))))
 		return ;
+	initialize_swap(swap);
 	swap->len = argc - 1;
 	if (mem_allocation(swap) == -1)
 		return ;
@@ -41,9 +61,7 @@ void	push_swap(int argc, char **argv)
 		var = ft_atoi(argv[i++]);
 		swap->stack_a[j++] = var;
 	}
-	rra(swap);
-	int b = 0;
-	while (b < j)
-		printf("%d ", swap->stack_a[b++]);
-
+	i = 0;
+	algorithm_sort(swap);
+	free_struct(swap);
 }

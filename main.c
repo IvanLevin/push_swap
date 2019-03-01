@@ -14,9 +14,6 @@ int		main(int argc, char **argv)
 		ft_putendl("\e[0;31mError");
 		return (-1);
 	}
-	ft_putendl("\e[1;35mSTART:");
-
 	push_swap(argc, argv);
 	return 0;
-
 }

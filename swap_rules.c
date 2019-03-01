@@ -11,6 +11,7 @@ void	sa(t_swap *sw_a)
 	temp = sw_a->stack_a[i + 1];
 	sw_a->stack_a[i + 1] = sw_a->stack_a[i];
 	sw_a->stack_a[i] = temp;
+	ft_printf("sa\n");
 }
 
 void	sb(t_swap *sw_b)
@@ -24,6 +25,7 @@ void	sb(t_swap *sw_b)
 	temp = sw_b->stack_b[i + 1];
 	sw_b->stack_b[i + 1] = sw_b->stack_b[i];
 	sw_b->stack_b[i] = temp;
+	ft_printf("sb\n");
 }
 
 void	ss(t_swap *sw_a, t_swap *sw_b)
@@ -42,6 +44,7 @@ void	ss(t_swap *sw_a, t_swap *sw_b)
 	temp = sw_b->stack_b[i + 1];
 	sw_b->stack_b[i + 1] = sw_b->stack_b[i];
 	sw_b->stack_b[i] = temp;
+	ft_printf("ss\n");
 }
 
 void	pa(t_swap *sw_a, t_swap *sw_b)
@@ -54,6 +57,7 @@ void	pa(t_swap *sw_a, t_swap *sw_b)
 	sw_a->stack_a[i] = sw_b->stack_b[i];
 	sw_a->a_check[i] = 1;
 	sw_b->b_check[i] = 0;
+	ft_printf("pa\n");
 }
 
 void	pb(t_swap *sw_a, t_swap *sw_b)
@@ -66,6 +70,7 @@ void	pb(t_swap *sw_a, t_swap *sw_b)
 	sw_b->stack_b[i] = sw_a->stack_a[i];
 	sw_b->b_check[i] = 1;
 	sw_a->a_check[i] = 0;
+	ft_printf("pb\n");
 }
 
 void	ra(t_swap *sw_a)
@@ -82,6 +87,7 @@ void	ra(t_swap *sw_a)
 		i++;
 	}
 	sw_a->stack_a[i] = temp;
+	ft_printf("ra\n");
 }
 
 void	rb(t_swap *sw_b)
@@ -98,6 +104,7 @@ void	rb(t_swap *sw_b)
 		i++;
 	}
 	sw_b->stack_b[i] = temp;
+	ft_printf("rb\n");
 }
 
 void	rr(t_swap *sw_a, t_swap *sw_b)
@@ -122,20 +129,61 @@ void	rr(t_swap *sw_a, t_swap *sw_b)
 		i++;
 	}
 	sw_a->stack_a[i] = temp;
+	ft_printf("rr\n");
 }
 
-//void	rra(t_swap *sw_a)
-//{
-//	int 	i;
-//	int 	temp;
-//
-//	i = 0;
-//	temp = sw_a->stack_a[i];
-//	sw_a->stack_a[i++] = sw_a->stack_a[sw_a->len - 1];
-//	sw_a->stack_a[i] = temp;
-////	while (sw_a->len - 1 > i)
-////	{
-////		sw_a->stack_a[i] =
-////
-////	}
-//}
+void	rra(t_swap *sw_a)
+{
+	int i;
+	int temp;
+
+	i = 1;
+	temp = sw_a->stack_a[sw_a->len - 1];
+	while (sw_a->len > i)
+	{
+		sw_a->stack_a[sw_a->len - i] = sw_a->stack_a[sw_a->len - i - 1];
+		i++;
+	}
+	sw_a->stack_a[sw_a->len - i] = temp;
+	ft_printf("rra\n");
+}
+
+void	rrb(t_swap *sw_b)
+{
+	int i;
+	int temp;
+
+	i = 1;
+	temp = sw_b->stack_b[sw_b->len - 1];
+	while (sw_b->len > i)
+	{
+		sw_b->stack_b[sw_b->len - i] = sw_b->stack_a[sw_b->len - i - 1];
+		i++;
+	}
+	sw_b->stack_b[sw_b->len - i] = temp;
+	ft_printf("rrb\n");
+}
+
+void	rrr(t_swap *sw_a, t_swap *sw_b)
+{
+	int i;
+	int temp;
+
+	i = 1;
+	temp = sw_a->stack_a[sw_a->len - 1];
+	while (sw_a->len > i)
+	{
+		sw_a->stack_a[sw_a->len - i] = sw_a->stack_a[sw_a->len - i - 1];
+		i++;
+	}
+	sw_a->stack_a[sw_a->len - i] = temp;
+	i = 1;
+	temp = sw_b->stack_b[sw_b->len - 1];
+	while (sw_b->len > i)
+	{
+		sw_b->stack_b[sw_b->len - i] = sw_b->stack_a[sw_b->len - i - 1];
+		i++;
+	}
+	sw_b->stack_b[sw_b->len - i] = temp;
+	ft_printf("rrr\n");
+}

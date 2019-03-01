@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 18:03:00 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/02/24 13:43:45 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/01 16:03:23 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ static	int	ft_find_smallest(int *arr, int j, int size)
 {
 	int		smallest_index;
 	int		smallest;
-	int		i;
 
-	i = 0;
 	smallest = arr[j];
 	smallest_index = j;
 	while (j < size)
@@ -42,9 +40,7 @@ int			*ft_selection_sort(int *arr)
 	int		smallest;
 
 	i = 0;
-	sw = 0;
 	size = 0;
-	smallest = 0;
 	while (arr[size])
 		size++;
 	if (!(new_arr = (int*)malloc(sizeof(int) * size)))
