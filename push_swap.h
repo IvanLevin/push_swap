@@ -26,6 +26,8 @@ int				check_valid(int argc, char **argv);
 int				check_valid_num(int argc, char **argv);
 void			push_swap(int argc, char **argv);
 void			algorithm_sort(t_swap *swap);
+void			sort_min(t_swap *swap);
+void			sort_insert(t_swap *swap);
 void			rrr(t_swap *sw_a, t_swap *sw_b);
 void			ss(t_swap *sw_a, t_swap *sw_b);
 void			pb(t_swap *sw_a, t_swap *sw_b);
