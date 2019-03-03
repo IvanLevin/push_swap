@@ -3,11 +3,11 @@
 //
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 # include "libft/libft.h"
-#include "ft_printf.h"
-#include <unistd.h>
-#include <stdio.h>
+# include "ft_printf.h"
+# include <unistd.h>
+# include <stdio.h>
 
 
 typedef struct s_swap

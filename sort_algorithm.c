@@ -1,14 +1,39 @@
 #include "push_swap.h"
 
+static	int		check_sort(t_swap *swap)
+{
+	int i;
+
+	i = 0;
+	while (i < swap->len - 1)
+	{
+		if (swap->stack_a[i] > swap->stack_a[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
+
+}
+
 void	sort_insert(t_swap *swap)
 {
- /*
-  * Тут будет сортировка от 4 до 6 чисел,
-  * Мы будем использовать эту сортировку в дальнейшем в нашем
-  * квик сорте, когда в нашем стеке остается от 4 до 6 символов,
-  * мы будем запускать соритровку вставкой и сортировать в стеке
-  * эти значения.
-  */
+	int	i;
+
+	i = 0;
+
+	while (check_sort(swap) == 1)
+	{
+		if (swap->stack_a[i] > swap->stack_a[i + 1])
+			sa(swap);
+		else if (swap->stack_a[i] < swap->stack_a[i + 1] && \
+		swap->stack_a[i] > swap->stack_a[swap->len - 1])
+			rra(swap);
+		else
+			ra(swap);
+	}
+	i = 0;
+	while (swap->stack_a[i])
+		ft_printf("%d ", swap->stack_a[i++]);
 }
 
 void	sort_min(t_swap *swap)
@@ -36,20 +61,6 @@ void	sort_min(t_swap *swap)
 		ra(swap);
 }
 
-static	int		check_sort(t_swap *swap)
-{
-	int i;
-
-	i = 0;
-	while (i < swap->len - 1)
-	{
-		if (swap->stack_a[i] > swap->stack_a[i + 1])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 void 			algorithm_sort(t_swap *swap)
 {
 	int		*sort;
@@ -62,7 +73,7 @@ void 			algorithm_sort(t_swap *swap)
 		return;
 	else if (swap->len < 4) // Простая сортировка 2 или 3 значений
 		sort_min(swap);
-	else if (swap->len < 7)
+	else if (swap->len == 4)
 		sort_insert(swap);
 	sort = ft_selection_sort(swap->stack_a);
 	swap->pivot = (0 + swap->len) / 2;
