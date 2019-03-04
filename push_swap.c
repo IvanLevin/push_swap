@@ -16,6 +16,7 @@ static void	initialize_swap(t_swap *swap)
 	swap->b_check = 0;
 	swap->len = 0;
 	swap->pivot = 0;
+	swap->score = 0;
 }
 
 static	int	mem_allocation(t_swap *swap)
