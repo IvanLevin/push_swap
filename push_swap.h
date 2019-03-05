@@ -4,8 +4,8 @@
 
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
-# include "libft/libft.h"
-#include "ft_printf.h"
+# include "../libft/libft.h"
+#include "ft_printf/include/ft_printf.h"
 #include <unistd.h>
 #include <stdio.h>
 
@@ -21,6 +21,7 @@ typedef struct s_swap
 
 
 }				t_swap;
+
 
 int				check_valid(int argc, char **argv);
 int				check_valid_num(int argc, char **argv);

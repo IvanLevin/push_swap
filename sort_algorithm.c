@@ -54,7 +54,7 @@ void 			algorithm_sort(t_swap *swap)
 {
 	int		*sort;
 	int		pivot;
-
+	int 	i = 0;
 
 	if (!check_sort(swap)) // Проверка, если все пришло отсортированное
 		return;
@@ -64,6 +64,11 @@ void 			algorithm_sort(t_swap *swap)
 		sort_min(swap);
 	else if (swap->len < 7)
 		sort_insert(swap);
-	sort = ft_selection_sort(swap->stack_a);
+//	sort = ft_selection_sort(swap->stack_a);
+	while (i < swap->len)
+	{
+		printf("%d ", swap->stack_a[i]);
+		i++;
+	}
 	swap->pivot = (0 + swap->len) / 2;
 }
