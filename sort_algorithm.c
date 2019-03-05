@@ -3,13 +3,22 @@
 int 	swap_pivot(t_swap *swap)
 {
 	int		*sort;
+	int 	i;
 
-	sort = ft_selection_sort(swap->stack_a);
+
+	sort = (int *)malloc(sizeof(int) * swap->len);
+	i = 0;
+	while (i < swap->len)
+	{
+		sort[i] = swap->stack_a[i];
+		i++;
+	}
+	sort = ft_selection_sort(sort, swap->len);
 	swap->pivot = (0 + swap->len) / 2;
 	return (sort[swap->pivot]);
 }
 
-static	int		check_sort(t_swap *swap)
+int		check_sort(t_swap *swap)
 {
 	int i;
 
@@ -77,8 +86,6 @@ void	sort_min(t_swap *swap)
 
 void 			algorithm_sort(t_swap *swap)
 {
-	int	pivot;
-
 	if (!check_sort(swap)) // Проверка, если все пришло отсортированное
 		return;
 	if (swap->len == 1) // Проверка на 1 значение
@@ -87,6 +94,6 @@ void 			algorithm_sort(t_swap *swap)
 		sort_min(swap);
 	else if (swap->len == 4)
 		sort_insert(swap);
-	pivot = swap_pivot(swap);
-	swap_quick_sort(swap, pivot);
+	swap->pivot = swap_pivot(swap);
+	swap_quick_sort(swap);
 }

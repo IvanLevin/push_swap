@@ -83,7 +83,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 int					ft_binary_search(int *list, int item, int len);
-int					*ft_selection_sort(int *arr);
+int					*ft_selection_sort(int *arr, int size);
 int					ft_atoi_base(const char *str, int str_base);
 void				ft_hex(int n);
 void				ft_swap(int *a, int *b);
