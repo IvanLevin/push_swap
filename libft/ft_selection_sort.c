@@ -31,18 +31,14 @@ static	int	ft_find_smallest(int *arr, int j, int size)
 	return (smallest_index);
 }
 
-int			*ft_selection_sort(int *arr)
+int			*ft_selection_sort(int *arr, int size)
 {
 	int		i;
 	int		sw;
-	int		size;
 	int		*new_arr;
 	int		smallest;
 
 	i = 0;
-	size = 0;
-	while (arr[size])
-		size++;
 	if (!(new_arr = (int*)malloc(sizeof(int) * size)))
 		return (NULL);
 	while (i < size)

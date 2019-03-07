@@ -3,25 +3,32 @@
 //
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
-# include "../libft/libft.h"
-#include "ft_printf/include/ft_printf.h"
-#include <unistd.h>
-#include <stdio.h>
+# define PUSH_SWAP_H
+# include "libft/libft.h"
+# include "ft_printf/include/ft_printf.h"
+# include <unistd.h>
+# include <stdio.h>
 
 
 typedef struct s_swap
 {
 	int			*stack_a;
 	int 		*stack_b;
-	int 		*a_check;
-	int 		*b_check;
+	int 		top_a;
+	int 		top_b;
 	int 		len;
 	int 		pivot;
-
+	int 		score;
+    int         min;
+    int         max;
+    int         *min_cover;
+    int         cover_num;
+    int         temp_cover;
+    int         len_min;
+    int         len_max;
+    int         way;
 
 }				t_swap;
-
 
 int				check_valid(int argc, char **argv);
 int				check_valid_num(int argc, char **argv);
@@ -29,10 +36,13 @@ void			push_swap(int argc, char **argv);
 void			algorithm_sort(t_swap *swap);
 void			sort_min(t_swap *swap);
 void			sort_insert(t_swap *swap);
+int 			swap_pivot(t_swap *swap);
+int 			swap_quick_sort (t_swap *swap);
+int				check_sort(t_swap *swap);
 void			rrr(t_swap *sw_a, t_swap *sw_b);
-void			ss(t_swap *sw_a, t_swap *sw_b);
-void			pb(t_swap *sw_a, t_swap *sw_b);
-void			pa(t_swap *sw_a, t_swap *sw_b);
+void			ss(t_swap *swap);
+void			pb(t_swap *swap);
+void			pa(t_swap *swap);
 void			rr(t_swap *sw_a, t_swap *sw_b);
 void			rra(t_swap *sw_a);
 void			rrb(t_swap *sw_b);
@@ -40,5 +50,11 @@ void			sb(t_swap *sw_b);
 void			ra(t_swap *sw_a);
 void			rb(t_swap *sw_b);
 void			sa(t_swap *sw);
+int             check_splitted(t_swap *swap);
+void            print_stacks(t_swap *swap);
+void            new_pivot(t_swap *swap);
+int             split_stacks_tob(t_swap *swap);
+int             split_stacks_toa(t_swap *swap);
+void            num_of_covers(t_swap *swap);
 
 #endif

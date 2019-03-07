@@ -4,18 +4,33 @@ static void free_struct(t_swap *swap)
 {
 	free(swap->stack_a);
 	free(swap->stack_b);
-	free(swap->a_check);
-	free(swap->b_check);
 }
 
 static void	initialize_swap(t_swap *swap)
 {
-	swap->stack_a = 0;
-	swap->stack_b = 0;
-	swap->a_check = 0;
-	swap->b_check = 0;
-	swap->len = 0;
+	int i;
+
+	i = 0;
+	while (i < swap->cover_num)
+		swap->min_cover[i++] = 0;
+	i = 0;
+	while (i < swap->len)
+	{
+		swap->stack_a[i] = 0;
+		swap->stack_b[i] = 0;
+		i++;
+	}
 	swap->pivot = 0;
+	swap->score = 0;
+	swap->top_a = 0;
+	swap->top_b = swap->len;
+	swap->max = 0;          // минимальное число для сортировки
+	swap->min = 0;          // максимальное число для сортировки
+//	swap->min_cover = 0;    // минимальный элемент в стеке А, который не трогаем
+	swap->temp_cover = 0;
+	swap->len_min = 0;      // расстояние до вершины стека минимального элемента
+	swap->len_max = 0;      //  расстояние до вершины стека максимального элемента
+	swap->way = -1;         // направление сортировки (вверх == -1, вниз == 1)
 }
 
 static	int	mem_allocation(t_swap *swap)
@@ -23,20 +38,13 @@ static	int	mem_allocation(t_swap *swap)
 	int	i;
 
 	i = 0;
+
 	if(!(swap->stack_a = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
 	if(!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
-	if(!(swap->a_check = (int *)malloc(sizeof(int) * swap->len)))
+	if(!(swap->min_cover = (int *)malloc(sizeof(int) * swap->cover_num)))
 		return (-1);
-	if(!(swap->b_check = (int *)malloc(sizeof(int) * swap->len)))
-		return (-1);
-	while (swap->len > i)
-		swap->a_check[i++] = 1;
-	i = 0;
-	while (swap->len > i)
-		swap->b_check[i++] = 0;
-	ft_bzero(swap->stack_b, (size_t)swap->len);
 	return (0);
 }
 
@@ -47,13 +55,13 @@ void	push_swap(int argc, char **argv)
 	int 	i;
 	int 	j;
 
-
 	if(!(swap = (t_swap *)malloc(sizeof(t_swap))))
 		return ;
-	initialize_swap(swap);
 	swap->len = argc - 1;
+    num_of_covers(swap);
 	if (mem_allocation(swap) == -1)
 		return ;
+	initialize_swap(swap);
 	i = 1;
 	j = 0;
 	while (argv[i])
@@ -61,7 +69,6 @@ void	push_swap(int argc, char **argv)
 		var = ft_atoi(argv[i++]);
 		swap->stack_a[j++] = var;
 	}
-	i = 0;
 	algorithm_sort(swap);
-	free_struct(swap);
+//	free_struct(swap);
 }
