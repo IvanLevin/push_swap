@@ -9,7 +9,7 @@ int 	swap_quick_sort (t_swap *swap)
 	j = 0;
 	while (i < swap->len)
 	{
-		if (swap->stack_a[i] < swap->pivot)
+		if (swap->stack_a[swap->top_a] >= swap->pivot)
 			pb(swap);
 		else
 			ra(swap);
@@ -21,13 +21,13 @@ int 	swap_quick_sort (t_swap *swap)
 	while (i < swap->len)
 	{
 		if (i < swap->top_a && i < swap->top_b)
-			printf("_ _\n");
+			ft_printf("_  _\n");
 		else if (i < swap->top_a && i >= swap->top_b)
-			printf("_ %d\n", swap->stack_b[i]);
+			ft_printf("_  %d\n", swap->stack_b[i]);
 		else if (i >= swap->top_a && i < swap->top_b)
-			printf("%d _\n", swap->stack_a[i]);
+			ft_printf("%d  _\n", swap->stack_a[i]);
 		else
-			printf("%d %d\n", swap->stack_a[i], swap->stack_b[i]);
+			ft_printf("%d  %d\n", swap->stack_a[i], swap->stack_b[i]);
 		i++;
 	}
 	return (0);
