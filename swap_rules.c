@@ -71,6 +71,8 @@ void	pb(t_swap *swap)
 	swap->score++;
 	swap->top_a++;
 	swap->top_b--;
+	swap->len_b++;
+	swap->len_a--;
 	ft_printf("pb\n");
 }
 

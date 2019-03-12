@@ -20,6 +20,8 @@ static void	initialize_swap(t_swap *swap)
 	swap->pivot = 0;
 	swap->score = 0;
 	swap->top_a = 0;
+	swap->len_a = swap->len;
+	swap->len_b = 0;
 	swap->top_b = swap->len;
 }
 

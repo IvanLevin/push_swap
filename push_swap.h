@@ -17,6 +17,8 @@ typedef struct s_swap
 	int 		top_a;
 	int 		top_b;
 	int 		len;
+	int 		len_a;
+	int 		len_b;
 	int 		pivot;
 	int 		score;
 
@@ -32,6 +34,7 @@ void			sort_insert(t_swap *swap);
 int 			swap_pivot(t_swap *swap);
 int 			swap_quick_sort (t_swap *swap);
 int				check_sort(t_swap *swap);
+void			sort_print(t_swap *swap);
 void			rrr(t_swap *sw_a, t_swap *sw_b);
 void			ss(t_swap *swap);
 void			pb(t_swap *swap);
