@@ -11,8 +11,8 @@ static void	initialize_swap(t_swap *swap)
 	int i;
 
 	i = 0;
-	while (i < swap->cover_num)
-		swap->min_cover[i++] = 0;
+	while (i < num_of_covers(swap))
+		swap->uns_mas[i++] = 0;
 	i = 0;
 	while (i < swap->len)
 	{
@@ -25,12 +25,14 @@ static void	initialize_swap(t_swap *swap)
 	swap->top_a = 0;
 	swap->top_b = swap->len;
 	swap->max = 0;          // минимальное число для сортировки
-	swap->min = 0;          // максимальное число для сортировки
-//	swap->min_cover = 0;    // минимальный элемент в стеке А, который не трогаем
-	swap->temp_cover = 0;
+	swap->min = 0;          // максимальное число для сортировки// минимальный элемент в стеке А, который не трогаем
+	swap->temp = 0;
 	swap->len_min = 0;      // расстояние до вершины стека минимального элемента
 	swap->len_max = 0;      //  расстояние до вершины стека максимального элемента
-	swap->way = -1;         // направление сортировки (вверх == -1, вниз == 1)
+//	swap->min_el_pos = swap->len;
+    swap->unsorted = 0;
+    swap->way = -1;         // направление сортировки (вверх == -1, вниз == 1)
+	swap->sorted = 0;
 }
 
 static	int	mem_allocation(t_swap *swap)
@@ -43,7 +45,7 @@ static	int	mem_allocation(t_swap *swap)
 		return (-1);
 	if(!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
-	if(!(swap->min_cover = (int *)malloc(sizeof(int) * swap->cover_num)))
+	if(!(swap->uns_mas = (int *)malloc(sizeof(int) * num_of_covers(swap))))
 		return (-1);
 	return (0);
 }
@@ -58,7 +60,6 @@ void	push_swap(int argc, char **argv)
 	if(!(swap = (t_swap *)malloc(sizeof(t_swap))))
 		return ;
 	swap->len = argc - 1;
-    num_of_covers(swap);
 	if (mem_allocation(swap) == -1)
 		return ;
 	initialize_swap(swap);
@@ -70,5 +71,5 @@ void	push_swap(int argc, char **argv)
 		swap->stack_a[j++] = var;
 	}
 	algorithm_sort(swap);
-//	free_struct(swap);
+	free_struct(swap);
 }

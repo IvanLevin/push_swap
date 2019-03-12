@@ -14,6 +14,7 @@ typedef struct s_swap
 {
 	int			*stack_a;
 	int 		*stack_b;
+    int         *uns_mas;
 	int 		top_a;
 	int 		top_b;
 	int 		len;
@@ -21,13 +22,12 @@ typedef struct s_swap
 	int 		score;
     int         min;
     int         max;
-    int         *min_cover;
-    int         cover_num;
-    int         temp_cover;
+    int         temp;
     int         len_min;
     int         len_max;
+    int         unsorted;
     int         way;
-
+    int         sorted;
 }				t_swap;
 
 int				check_valid(int argc, char **argv);
@@ -43,7 +43,7 @@ void			rrr(t_swap *sw_a, t_swap *sw_b);
 void			ss(t_swap *swap);
 void			pb(t_swap *swap);
 void			pa(t_swap *swap);
-void			rr(t_swap *sw_a, t_swap *sw_b);
+void			rr(t_swap *swap);
 void			rra(t_swap *sw_a);
 void			rrb(t_swap *sw_b);
 void			sb(t_swap *sw_b);
@@ -55,6 +55,13 @@ void            print_stacks(t_swap *swap);
 void            new_pivot(t_swap *swap);
 int             split_stacks_tob(t_swap *swap);
 int             split_stacks_toa(t_swap *swap);
-void            num_of_covers(t_swap *swap);
+int          	num_of_covers(t_swap *swap);
+int             check_splitted_a(t_swap *swap);
+void            new_pivot_b(t_swap *swap);
+void            new_pivot_a(t_swap *swap);
+int             check_splitted_b(t_swap *swap);
+void            sort_splitted_toa(t_swap *swap);
+int             check_sorted(t_swap *swap);
+void            sort_a(t_swap *swap);
 
 #endif
