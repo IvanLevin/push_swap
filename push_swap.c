@@ -17,9 +17,13 @@ static void	initialize_swap(t_swap *swap)
 		swap->stack_b[i] = 0;
 		i++;
 	}
+	i = 0;
+	while (i < 12)
+		swap->cap[i++] = 0;
 	swap->pivot = 0;
 	swap->score = 0;
 	swap->top_a = 0;
+	swap->cap_len = 0;
 	swap->len_a = swap->len;
 	swap->len_b = 0;
 	swap->top_b = swap->len;
@@ -31,6 +35,8 @@ static	int	mem_allocation(t_swap *swap)
 
 	i = 0;
 	if(!(swap->stack_a = (int *)malloc(sizeof(int) * swap->len)))
+		return (-1);
+	if(!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
 	if(!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);

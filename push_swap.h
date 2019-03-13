@@ -4,6 +4,7 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define CAP 12
 # include "libft/libft.h"
 # include "ft_printf/include/ft_printf.h"
 # include <unistd.h>
@@ -14,6 +15,8 @@ typedef struct s_swap
 {
 	int			*stack_a;
 	int 		*stack_b;
+	int 		cap[CAP];
+	int 		cap_len;
 	int 		top_a;
 	int 		top_b;
 	int 		len;

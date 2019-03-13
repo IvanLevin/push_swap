@@ -61,32 +61,39 @@ void	sort_insert(t_swap *swap)
 
 void	sort_min(t_swap *swap)
 {
-	if (swap->len == 2 || (swap->stack_a[0] > swap->stack_a[1] && \
-	swap->stack_a[0] < swap->stack_a[2]))
+	if ((swap->len_a == 2 && swap->stack_a[swap->top_a] >
+	swap->stack_a[swap->top_a + 1]) || (swap->stack_a[swap->top_a] >
+	swap->stack_a[swap->top_a + 1] && swap->stack_a[swap->top_a] <
+	swap->stack_a[swap->top_a + 2]))
 		sa(swap);
-	else if (swap->stack_a[0] < swap->stack_a[1] && \
-	swap->stack_a[0] > swap->stack_a[2])
+	else if (swap->len_a != 2 && (swap->stack_a[swap->top_a] <
+	swap->stack_a[swap->top_a +	1] && \
+	swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 2]))
 		rra(swap);
-	else if (swap->stack_a[0] < swap->stack_a[1] && \
-	swap->stack_a[1] > swap->stack_a[2])
+	else if (swap->len_a != 2 && (swap->stack_a[swap->top_a] <
+	swap->stack_a[swap->top_a + 1] && \
+	swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->top_a + 2]))
 	{
 		rra(swap);
 		sa(swap);
 	}
-	else if (swap->stack_a[0] > swap->stack_a[1] && \
-	swap->stack_a[1] > swap->stack_a[2])
+	else if (swap->len_a != 2 && (swap->stack_a[swap->top_a] >
+	swap->stack_a[swap->top_a + 1] && \
+	swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->top_a + 2]))
 	{
 		ra(swap);
 		sa(swap);
 	}
-	else if (swap->stack_a[0] > swap->stack_a[2] && \
-	swap->stack_a[2] > swap->stack_a[1])
+	else if (swap->len_a != 2 && (swap->stack_a[swap->top_a] >
+	swap->stack_a[swap->top_a + 2] && \
+	swap->stack_a[swap->top_a + 2] > swap->stack_a[swap->top_a + 1]))
 		ra(swap);
 }
 
 void 			algorithm_sort(t_swap *swap)
 {
-	if (!check_sort(swap)) // Проверка, если все пришло отсортированное
+	sort_print(swap);
+ 	if (!check_sort(swap)) // Проверка, если все пришло отсортированное
 		return;
 	if (swap->len == 1) // Проверка на 1 значение
 		return;
@@ -94,6 +101,11 @@ void 			algorithm_sort(t_swap *swap)
 		sort_min(swap);
 	else if (swap->len == 4)
 		sort_insert(swap);
-	swap->pivot = swap_pivot(swap);
-	swap_quick_sort(swap);
+	else
+	{
+		swap->pivot = swap_pivot(swap);
+		swap_quick_sort(swap);
+	}
+	sort_print(swap);
+	printf(TURQUOISE"SCORE = %d\n", swap->score);
 }

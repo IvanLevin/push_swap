@@ -5,7 +5,7 @@ void	sa(t_swap *sw_a)
 	int		i;
 	int 	temp;
 
-	i = 0;
+	i = sw_a->top_a;
 	if (sw_a->len - sw_a->top_a <= 1)
 		return ;
 	temp = sw_a->stack_a[i + 1];
@@ -58,6 +58,8 @@ void	pa(t_swap *swap)
 	swap->stack_a[swap->top_a] = swap->stack_b[swap->top_b];
 	swap->score++;
 	swap->top_b++;
+	swap->len_b--;
+	swap->len_a++;
 	ft_printf("pa\n");
 }
 
