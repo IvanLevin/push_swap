@@ -18,7 +18,7 @@ static void	initialize_swap(t_swap *swap)
 		i++;
 	}
 	i = 0;
-	while (i < 12)
+	while (i < 20)
 		swap->cap[i++] = 0;
 	swap->pivot = 0;
 	swap->score = 0;
