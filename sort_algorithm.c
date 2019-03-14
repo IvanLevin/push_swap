@@ -81,6 +81,7 @@ void	sort_min(t_swap *swap)
 	else if (swap->stack_a[swap->top_a] > swap->stack_a[swap->len - 1] && \
 	swap->stack_a[swap->len - 1] > swap->stack_a[swap->top_a + 1])
 		ra(swap);
+	swap->sorted = swap->len - swap->top_a;
 }
 
 void 			algorithm_sort(t_swap *swap)

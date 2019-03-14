@@ -56,12 +56,18 @@ void            new_pivot(t_swap *swap);
 int             split_stacks_tob(t_swap *swap);
 int             split_stacks_toa(t_swap *swap);
 int          	num_of_covers(t_swap *swap);
-int             check_splitted_a(t_swap *swap);
+//int             check_splitted_a(t_swap *swap);
 void            new_pivot_b(t_swap *swap);
 void            new_pivot_a(t_swap *swap);
 int             check_splitted_b(t_swap *swap);
 void            sort_splitted_toa(t_swap *swap);
 int             check_sorted(t_swap *swap);
 void            sort_a(t_swap *swap);
+void            split_stack_b(t_swap *swap);
+void            sort_toa(t_swap *swap);
+void            put_b(t_swap *swap);
+int             b_del(t_swap *swap);
+void            sort_toa2(t_swap *swap);
+void            find_max_min(t_swap *swap);
 
 #endif

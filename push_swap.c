@@ -26,7 +26,7 @@ static void	initialize_swap(t_swap *swap)
 	swap->top_b = swap->len;
 	swap->max = 0;          // минимальное число для сортировки
 	swap->min = 0;          // максимальное число для сортировки// минимальный элемент в стеке А, который не трогаем
-	swap->temp = 0;
+	swap->temp = 2;
 	swap->len_min = 0;      // расстояние до вершины стека минимального элемента
 	swap->len_max = 0;      //  расстояние до вершины стека максимального элемента
 //	swap->min_el_pos = swap->len;
@@ -57,7 +57,7 @@ void	push_swap(int argc, char **argv)
 	int 	i;
 	int 	j;
 
-	if(!(swap = (t_swap *)malloc(sizeof(t_swap))))
+	if (!(swap = (t_swap *)malloc(sizeof(t_swap))))
 		return ;
 	swap->len = argc - 1;
 	if (mem_allocation(swap) == -1)
