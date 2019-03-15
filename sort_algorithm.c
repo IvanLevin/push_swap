@@ -30,7 +30,6 @@ int		check_sort(t_swap *swap)
 		i++;
 	}
 	return (0);
-
 }
 
 void	sort_insert(t_swap *swap)
