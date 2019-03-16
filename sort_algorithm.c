@@ -22,7 +22,7 @@ int		check_sort(t_swap *swap)
 {
 	int i;
 
-	i = 0;
+	i = swap->top_a;
 	while (i < swap->len - 1)
 	{
 		if (swap->stack_a[i] > swap->stack_a[i + 1])

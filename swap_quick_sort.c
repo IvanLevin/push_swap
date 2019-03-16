@@ -73,19 +73,6 @@ void	function_3(t_swap *swap)
 
 }
 
-int		check_sort_a(t_swap *swap) // сортировка для стека А
-{
-	int i;
-
-	i = 0;
-	while (i < 3)
-	{
-		if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 void	function_2(t_swap *swap, int swap_len)
 {
@@ -94,78 +81,69 @@ void	function_2(t_swap *swap, int swap_len)
 
 	if (swap_len <= 3)
 	{
+		if (check_sort(swap) == 0)
+			return;
 		swap_stack_a(swap);
 		sort_print(swap);
 		return;
 	}
-	i = 0;
+	i = -1;
 	flag = 0;
 	pivot_a(swap);
-
-	while (i < swap_len)
+	while (++i < swap_len && check_sort(swap) == 1)
 	{
 		if (swap->stack_a[swap->top_a] < swap->pivot)
 		{
 			pb(swap);
-//			if (swap->rec)
-//			{
-//				if (swap->stack_b[swap->top_b] < swap->stack_b[swap->top_b + 1])
-//					sb(swap);
-//			}
 			swap->rec++;
 		}
 		else
 		{
-			ra(swap);
-			flag++;
-
-		}
-		sort_print(swap);
-		i++;
-	}
-	if (flag)
-		while(flag)
-		{
-			rra(swap);
 			if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
 				sa(swap);
-			flag--;
-			sort_print(swap);
+			ra(swap);
+			flag++;
 		}
-	if (swap_len - swap->rec <= 3 && check_sort_a(swap) == 1)
-	{
-		swap_stack_a(swap);
 		sort_print(swap);
 	}
+	while(flag != 0)
+	{
+		rra(swap);
+		if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
+			sa(swap); // делит
+		flag--;
+		sort_print(swap);
+	}
+	if (swap->check_a - swap->top_a <= 3 && check_sort(swap) == 1)
+		swap_stack_a(swap);
+	else if (swap->check_a - swap->top_a > 3 && check_sort(swap) == 1)
+	{
+		function_2(swap, swap->check_a - swap->top_a);
+		swap->rec = 0;
+	}
 	if (swap->rec)
-		function_3(swap);
+	{
+		swap->swap_len = swap->rec;
+		pivot_b_test(swap);
+		sort_stack_b(swap);
+	}
 }
 
 void	sort_stack_b(t_swap *swap)
 {
 	int 	i;
 	int 	check;
-	int 	swap_len;
 
 	i = 0;
 	check = 0;
 	swap->check_a = swap->top_a;
-	swap->rec = 0;
-
-	if (swap->cap_len < 0)
-		return;
-	else if (swap->cap_len - (swap->cap_len - 1) <= 0)
-			swap_len = swap->cap[swap->cap_len];
-	else if (swap->cap_len == 0)
-		swap_len = swap->cap[swap->cap_len];
-	else
-		swap_len = swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1];
-
-	while (i < swap_len)
+	while (i < swap->swap_len)
 	{
 		if (swap->stack_b[swap->top_b] >= swap->pivot)
 		{
 			pa(swap);
+			if (swap->rec)
+				swap->rec--;
 			if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
 				sa(swap);
 		}
@@ -182,31 +160,34 @@ void	sort_stack_b(t_swap *swap)
 		{
 			rrb(swap);
 			pa(swap);
+			if (swap->rec)
+				swap->rec--;
 			check--;
 			sort_print(swap);
-
 		}
-	function_2(swap, swap_len);
-	swap->cap_len--;
+	function_2(swap, swap->swap_len);
+	swap->rec = 0;
 }
 
 void	quick_sort(t_swap *swap)
 {
-	int 	i;
-
-//	while (swap->top_a != 0)
-//	{
-	pivot_b(swap);
-	sort_stack_b(swap);
-	pivot_b(swap);
-	sort_stack_b(swap);
-	pivot_b(swap);
-	sort_stack_b(swap);
-	pivot_b(swap);
-	sort_stack_b(swap);
-
-
-//	}
+	while (1)
+	{
+		pivot_b(swap);
+		if (swap->cap_len < 0)
+			return;
+		else if (swap->cap_len - (swap->cap_len - 1) <= 0)
+				swap->swap_len = swap->cap[swap->cap_len];
+		else if (swap->cap_len == 0)
+			swap->swap_len = swap->cap[swap->cap_len];
+		else
+			swap->swap_len = swap->cap[swap->cap_len] -
+					swap->cap[swap->cap_len - 1];
+		sort_stack_b(swap);
+		swap->cap_len--;
+		if (check_sort(swap) == 1)
+			break;
+	}
 }
 
 void 	sort_print(t_swap *swap)

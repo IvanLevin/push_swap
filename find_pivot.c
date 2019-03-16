@@ -25,6 +25,27 @@ void	new_pivot_a(t_swap *swap)
 	free(sort);
 }
 
+void	pivot_b_test(t_swap *swap)
+{
+	int 	*sort;
+	int 	i;
+	int 	stack;
+
+	i = 0;
+	sort = (int *)malloc(sizeof(int) * swap->swap_len + 1);
+	stack = swap->top_b;
+	while (i < swap->swap_len)
+	{
+		sort[i] = swap->stack_b[stack];
+		i++;
+		stack++;
+	}
+	sort = ft_selection_sort(sort, swap->swap_len);
+	swap->pivot = swap->swap_len / 2;
+	swap->pivot = sort[swap->pivot];
+	free(sort);
+}
+
 void	pivot_a(t_swap *swap)
 {
 	int		*sort;
@@ -33,7 +54,7 @@ void	pivot_a(t_swap *swap)
 
 	i = 0;
 	j = swap->top_a;
-	sort = (int *)malloc(sizeof(int) * swap->check_a - swap->top_a);
+	sort = (int *)malloc(sizeof(int) * swap->check_a - swap->top_a  + 1);
 	while (i < swap->check_a - swap->top_a)
 		sort[i++] = swap->stack_a[j++];
 	sort = ft_selection_sort(sort, swap->check_a - swap->top_a);
@@ -51,27 +72,26 @@ void	pivot_b(t_swap *swap)
 	int 	*sort;
 	int 	i;
 	int 	stack;
-	int 	swap_len;
 
 	i = 0;
 	if (swap->cap_len < 0)
 		return;
 	else if (swap->cap_len - (swap->cap_len - 1) <= 0)
-			swap_len = swap->cap[swap->cap_len];
+			swap->swap_len = swap->cap[swap->cap_len];
 	else if (swap->cap_len == 0)
-		swap_len = swap->cap[swap->cap_len];
+		swap->swap_len = swap->cap[swap->cap_len];
 	else
-		swap_len = swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1];
-	sort = (int *)malloc(sizeof(int) * swap->len_b - swap_len);
+		swap->swap_len = swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1];
+	sort = (int *)malloc(sizeof(int) * swap->len_b - swap->swap_len + 1);
 	stack = swap->top_b;
-	while (i < swap_len)
+	while (i < swap->swap_len)
 	{
 		sort[i] = swap->stack_b[stack];
 		i++;
 		stack++;
 	}
-	sort = ft_selection_sort(sort, swap_len);
-	swap->pivot = swap_len / 2;
+	sort = ft_selection_sort(sort, swap->swap_len);
+	swap->pivot = swap->swap_len / 2;
 	swap->pivot = sort[swap->pivot];
 	free(sort);
 }

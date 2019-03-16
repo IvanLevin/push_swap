@@ -26,6 +26,7 @@ typedef struct	s_swap
 	int 		len_a;
 	int 		check_a;
 	int 		rec;
+	int 		swap_len;
 
 }				t_swap;
 
@@ -44,6 +45,7 @@ void			pivot_b(t_swap *swap);
 void			sort_stack_b(t_swap *swap);
 void			new_pivot_a(t_swap *swap);
 void			pivot_a(t_swap *swap);
+void			pivot_b_test(t_swap *swap);
 void			rrr(t_swap *sw_a, t_swap *sw_b);
 void			ss(t_swap *swap);
 void			pb(t_swap *swap);
