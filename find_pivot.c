@@ -95,3 +95,22 @@ void	pivot_b(t_swap *swap)
 	swap->pivot = sort[swap->pivot];
 	free(sort);
 }
+
+void	put_stack_b(t_swap *swap)
+{
+	int 	len;
+	int 	i;
+
+	i = 0;
+	len = swap->len_a;
+	printf("pivot = %d\n", swap->pivot);
+	while (i < len)
+	{
+		if (swap->stack_a[swap->top_a] < swap->pivot)
+			pb(swap);
+		else
+			ra(swap);
+		i++;
+	}
+	sort_print(swap);
+}

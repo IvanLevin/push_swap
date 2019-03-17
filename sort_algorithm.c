@@ -32,6 +32,20 @@ int		check_sort(t_swap *swap)
 	return (0);
 }
 
+int 	check_sort_b(t_swap *swap)
+{
+	int i;
+
+	i = swap->top_b;
+	while (i < swap->rec)
+	{
+		if (swap->stack_b[i] < swap->stack_b[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	sort_insert(t_swap *swap)
 {
 	int	i;
@@ -58,45 +72,14 @@ void	sort_insert(t_swap *swap)
 	printf(GREEN"\nSCORE = %d", swap->score);
 }
 
-void	sort_min(t_swap *swap)
-{
-	if ((swap->len_a == 2 && swap->stack_a[swap->top_a] >
-	swap->stack_a[swap->top_a + 1]) || (swap->stack_a[swap->top_a] >
-	swap->stack_a[swap->top_a + 1] && swap->stack_a[swap->top_a] <
-	swap->stack_a[swap->top_a + 2]))
-		sa(swap);
-	else if (swap->len_a != 2 && (swap->stack_a[swap->top_a] <
-	swap->stack_a[swap->top_a +	1] && \
-	swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 2]))
-		rra(swap);
-	else if (swap->len_a != 2 && (swap->stack_a[swap->top_a] <
-	swap->stack_a[swap->top_a + 1] && \
-	swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->top_a + 2]))
-	{
-		rra(swap);
-		sa(swap);
-	}
-	else if (swap->len_a != 2 && (swap->stack_a[swap->top_a] >
-	swap->stack_a[swap->top_a + 1] && \
-	swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->top_a + 2]))
-	{
-		ra(swap);
-		sa(swap);
-	}
-	else if (swap->len_a != 2 && (swap->stack_a[swap->top_a] >
-	swap->stack_a[swap->top_a + 2] && \
-	swap->stack_a[swap->top_a + 2] > swap->stack_a[swap->top_a + 1]))
-		ra(swap);
-}
-
-void 			algorithm_sort(t_swap *swap)
+void 	algorithm_sort(t_swap *swap)
 {
 	sort_print(swap);
- 	if (!check_sort(swap)) // Проверка, если все пришло отсортированное
+ 	if (!check_sort(swap))
 		return;
-	if (swap->len == 1) // Проверка на 1 значение
+	if (swap->len == 1)
 		return;
-	else if (swap->len < 4) // Простая сортировка 2 или 3 значений
+	else if (swap->len < 4)
 		sort_min(swap);
 	else if (swap->len == 4)
 		sort_insert(swap);
@@ -107,4 +90,23 @@ void 			algorithm_sort(t_swap *swap)
 	}
 	sort_print(swap);
 	printf(TURQUOISE"SCORE = %d\n", swap->score);
+}
+
+int 	swap_quick_sort(t_swap *swap)
+{
+	int		i;
+
+	i = 0;
+	while (3 < swap->len - swap->len_b)
+	{
+		put_stack_b(swap);
+		new_pivot_a(swap);
+		swap->cap[i++] = swap->len_b;
+		printf("cap = %d \n", swap->cap[i - 1]);
+	}
+	swap->cap_len = i - 1;
+	sort_min(swap);
+	quick_sort(swap);
+
+	return (0);
 }

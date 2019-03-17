@@ -30,6 +30,8 @@ static void	initialize_swap(t_swap *swap)
 	swap->check_a = 0;
 	swap->rec = 0;
 	swap->swap_len = 0;
+	swap->check = 0;
+	swap->flag = 0;
 }
 
 static	int	mem_allocation(t_swap *swap)
