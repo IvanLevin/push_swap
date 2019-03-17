@@ -18,6 +18,23 @@ int 	swap_pivot(t_swap *swap)
 	return (sort[swap->pivot]);
 }
 
+int 	check_sort_b(t_swap *swap)
+{
+	int i;
+	int k;
+
+	k = 0;
+	i = swap->top_b;
+	while (k < 3)
+	{
+		if (swap->stack_b[i] < swap->stack_b[i + 1])
+			return (1);
+		i++;
+		k++;
+	}
+	return (0);
+}
+
 int		check_sort(t_swap *swap)
 {
 	int i;
@@ -26,20 +43,6 @@ int		check_sort(t_swap *swap)
 	while (i < swap->len - 1)
 	{
 		if (swap->stack_a[i] > swap->stack_a[i + 1])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int 	check_sort_b(t_swap *swap)
-{
-	int i;
-
-	i = swap->top_b;
-	while (i < swap->rec)
-	{
-		if (swap->stack_b[i] < swap->stack_b[i + 1])
 			return (1);
 		i++;
 	}

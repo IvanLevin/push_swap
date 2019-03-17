@@ -23,7 +23,6 @@ static	void	sort_stack_a_next(t_swap *swap, int swap_len)
 			ra(swap);
 			swap->flag++;
 		}
-
 		sort_print(swap);
 	}
 	while(swap->flag != 0)
@@ -35,8 +34,6 @@ static	void	sort_stack_a_next(t_swap *swap, int swap_len)
 		sort_print(swap);
 	}
 }
-
-
 
 void			sort_stack_a(t_swap *swap, int swap_len)
 {
@@ -96,7 +93,6 @@ static	void	sort_stack_b_next(t_swap *swap)
 	}
 	else
 	{
-		swap_stack_b(swap);
 		rb(swap);
 		swap->check++;
 	}
@@ -113,7 +109,6 @@ void			sort_stack_b(t_swap *swap)
 	{
 		sort_stack_b_next(swap);
 		sort_print(swap);
-		//swap_stack_b(swap);
 		i++;
 	}
 	if (swap->check != 0)

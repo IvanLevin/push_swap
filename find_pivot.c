@@ -12,16 +12,13 @@ void	new_pivot_a(t_swap *swap)
 
 	i = 0;
 	j = swap->top_a;
-	sort = (int *)malloc(sizeof(int) * swap->len_a);
+	if(!(sort = (int *)malloc(sizeof(int) * swap->len_a)))
+		return;
 	while (i < swap->len_a)
 		sort[i++] = swap->stack_a[j++];
 	sort = ft_selection_sort(sort, swap->len_a);
 	swap->pivot = swap->len_a / 2;
 	swap->pivot = sort[swap->pivot];
-	i = 0;
-	while (i < swap->len_a)
-		printf("%d ", sort[i++]);
-	printf("\n");
 	free(sort);
 }
 
@@ -32,7 +29,8 @@ void	pivot_b_test(t_swap *swap)
 	int 	stack;
 
 	i = 0;
-	sort = (int *)malloc(sizeof(int) * swap->swap_len + 1);
+	if(!(sort = (int *)malloc(sizeof(int) * swap->swap_len + 1)))
+		return;
 	stack = swap->top_b;
 	while (i < swap->swap_len)
 	{
@@ -54,16 +52,13 @@ void	pivot_a(t_swap *swap)
 
 	i = 0;
 	j = swap->top_a;
-	sort = (int *)malloc(sizeof(int) * swap->check_a - swap->top_a  + 1);
+	if(!(sort = (int *)malloc(sizeof(int) * swap->check_a - swap->top_a  + 1)))
+		return;
 	while (i < swap->check_a - swap->top_a)
 		sort[i++] = swap->stack_a[j++];
 	sort = ft_selection_sort(sort, swap->check_a - swap->top_a);
 	swap->pivot = (swap->check_a - swap->top_a) / 2;
 	swap->pivot = sort[swap->pivot];
-	i = 0;
-	while (i < swap->check_a - swap->top_a)
-		printf("%d ", sort[i++]);
-	printf("\n");
 	free(sort);
 }
 
@@ -103,7 +98,6 @@ void	put_stack_b(t_swap *swap)
 
 	i = 0;
 	len = swap->len_a;
-	printf("pivot = %d\n", swap->pivot);
 	while (i < len)
 	{
 		if (swap->stack_a[swap->top_a] < swap->pivot)
