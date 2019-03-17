@@ -8,71 +8,55 @@ void   sort_a(t_swap *swap)
     if (swap->len - swap->top_a - swap->sorted == 2)
     {
         if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
-        {
             sa(swap);
-            ra(swap);
-            ra(swap);
-        }
-        else
-        {
-            ra(swap);
-            ra(swap);
-        }
     }
-    else if (swap->stack_a[i] > swap->stack_a[i + 1] && swap->stack_a[i] < swap->stack_a[i + 2])
+    else if (swap->stack_a[i] > swap->stack_a[i + 1] && swap->stack_a[i] < swap->stack_a[i + 2]) // !
     {
         sa(swap);
-        ra(swap);
-        ra(swap);
-        ra(swap);
     }
-    else if (swap->stack_a[i] > swap->stack_a[i + 1] && swap->stack_a[i] > swap->stack_a[i + 2])
+    else if (swap->stack_a[i] > swap->stack_a[i + 1] && swap->stack_a[i] > swap->stack_a[i + 2]) // !
     {
         if (swap->stack_a[i + 1] > swap->stack_a[i + 2])
         {
+            sa(swap);
             pb(swap);
             sa(swap);
-            ra(swap);
+            pa(swap);
+            sa(swap);
+        }
+        else
+        {
+            pb(swap);
             ra(swap);
             pa(swap);
-            ra(swap);
-        }
-        else
-        {
             sa(swap);
-            if (swap->stack_a[i] < swap->stack_a[i + 1] && swap->stack_a[i] < swap->stack_a[i + 2])
-                ra(swap);
-            sa(swap);
-            ra(swap);
-            ra(swap);
-        }
-    }
-    else if (swap->stack_a[i] < swap->stack_a[i + 1] && swap->stack_a[i] < swap->stack_a[i + 2])
-    {
-        ra(swap);
-        if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
-        {
-            sa(swap);
-            ra(swap);
-            ra(swap);
-        }
-        else
-        {
-            ra(swap);
-            ra(swap);
+            rra(swap);
         }
     }
     else if (swap->stack_a[i] < swap->stack_a[i + 1] && swap->stack_a[i] > swap->stack_a[i + 2])
     {
         if (swap->stack_a[i + 1] > swap->stack_a[i + 2])
         {
+            ra(swap);
+            sa(swap);
+            rra(swap);
+            sa(swap);
+        }
+    }
+    else if (swap->stack_a[i] < swap->stack_a[i + 1] && swap->stack_a[i] < swap->stack_a[i + 2]) // !
+    {
+        if (swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->top_a + 2])
+        {
             pb(swap);
             sa(swap);
-            ra(swap);
             pa(swap);
-            ra(swap);
-            ra(swap);
         }
+//        else
+//        {
+//            pb(swap);
+//            sa(swap);
+//            pa(swap);
+//        }
     }
     swap->sorted = swap->len - swap->top_a;
 }

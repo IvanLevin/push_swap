@@ -44,6 +44,7 @@ void    sort_toa(t_swap *swap)
             {
                 pa(swap);
                 ra(swap);
+                swap->unsorted++;
                 i++;
             }
             else
@@ -56,11 +57,11 @@ void    sort_toa(t_swap *swap)
     //            swap->unsorted++;
     //        }
         }
-//    while (swap->unsorted)
-//    {
-//        rrb(swap);
-//        swap->unsorted--;
-//    }
+    while (swap->unsorted)
+    {
+        rra(swap);
+        swap->unsorted--;
+    }
     while (check_sorted(swap) == 0)
         ra(swap);
     swap->temp--;

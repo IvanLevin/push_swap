@@ -8,7 +8,8 @@ void    sort_toa2(t_swap *swap)
     while (i < swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1])
     {
         find_max_min(swap);
-        if (swap->stack_b[swap->top_b] == swap->max) {
+        if (swap->stack_b[swap->top_b] == swap->max)
+        {
             pa(swap);
             i++;
         } else if (swap->stack_b[swap->top_b] == swap->min) {
@@ -19,7 +20,7 @@ void    sort_toa2(t_swap *swap)
             sb(swap);
     }
     while (check_sorted(swap) == 0)
-        ra(swap);
+        rra(swap);
 //    swap->temp--;
     swap->sorted = swap->len - swap->top_a;
 }
@@ -32,7 +33,7 @@ int     check_splitted_a(t_swap *swap)
     i = swap->top_a;
     while (i < swap->len - swap->sorted)
     {
-        if (swap->stack_a[i] >= swap->pivot)
+        if (swap->stack_a[i] < swap->pivot)
             return (0);
         else
             i++;
@@ -47,7 +48,7 @@ void    put_b(t_swap *swap)
     i = swap->top_a;
     while (check_splitted_a(swap) == 0)
     {
-        if (swap->stack_a[swap->top_a] >= swap->pivot)
+        if (swap->stack_a[swap->top_a] < swap->pivot)
             pb(swap);
         else {
             ra(swap);
@@ -67,14 +68,8 @@ int    b_del(t_swap *swap)
     if (swap->sorted == swap->len)
         return (1);
     int j = 0;
-//    printf("%d %d\n", swap->uns_mas[swap->temp], swap->uns_mas[swap->temp - 1]);
     split_stacks_toa(swap);
-//    split_stacks_toa(swap);
     printf("%d\n", swap->sorted);
-//    while (swap->top_a - swap->sorted > 3)
-//    {
-//        ;
-//    }
     sort_a(swap);
     return (0);
 }
@@ -82,6 +77,14 @@ int    b_del(t_swap *swap)
 void    split_stack_b(t_swap *swap)
 {
     new_pivot_b(swap);
+    while (swap->stack_a[swap->top_a] != 88)
+    {
+        if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] <= 4)
+            sort_toa(swap);
+        new_pivot_b(swap);
+        if (b_del(swap) == 1)
+            break;
+    }
     while (1)
     {
         if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] <= 4)
