@@ -78,7 +78,7 @@ void    sort_toa(t_swap *swap)
 
 int 	swap_quick_sort(t_swap *swap)
 {
-    while (swap->top_a < swap->len - 3)
+    while (swap->top_a <= swap->len - 3)
     {
         split_stacks_tob(swap);
         new_pivot(swap);

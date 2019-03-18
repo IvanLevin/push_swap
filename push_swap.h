@@ -55,6 +55,7 @@ void            print_stacks(t_swap *swap);
 void            new_pivot(t_swap *swap);
 int             split_stacks_tob(t_swap *swap);
 int             split_stacks_toa(t_swap *swap);
+int             split_stacks_toa2(t_swap *swap);
 int          	num_of_covers(t_swap *swap);
 //int             check_splitted_a(t_swap *swap);
 void            new_pivot_b(t_swap *swap);

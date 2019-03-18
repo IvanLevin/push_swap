@@ -83,6 +83,15 @@ void    sort_toa3(t_swap *swap)
             pa(swap);
             pa(swap);
         }
+        else
+        {
+            pa(swap);
+            sb(swap);
+            pa(swap);
+            sa(swap);
+            pa(swap);
+            sa(swap);
+        }
     }
     else if (swap->stack_b[i] > swap->stack_b[i + 1] && swap->stack_b[i] > swap->stack_b[i + 2])
     {
@@ -116,7 +125,8 @@ int    b_del(t_swap *swap)
     if (swap->sorted == swap->len)
         return (1);
     int j = 0;
-//    if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] > 3)
+    if (swap->temp == 2)
+        split_stacks_toa2(swap);
     split_stacks_toa(swap);
     printf("%d\n", swap->sorted);
     sort_a(swap);
@@ -126,7 +136,7 @@ int    b_del(t_swap *swap)
 void    split_stack_b(t_swap *swap)
 {
     new_pivot_b(swap);
-    while (swap->stack_a[swap->top_a] != 15)
+    while (swap->stack_a[swap->top_a] != 92)
     {
         if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] == 3)
             sort_toa3(swap);
