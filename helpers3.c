@@ -77,14 +77,6 @@ int    b_del(t_swap *swap)
 void    split_stack_b(t_swap *swap)
 {
     new_pivot_b(swap);
-    while (swap->stack_a[swap->top_a] != 88)
-    {
-        if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] <= 4)
-            sort_toa(swap);
-        new_pivot_b(swap);
-        if (b_del(swap) == 1)
-            break;
-    }
     while (1)
     {
         if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] <= 4)

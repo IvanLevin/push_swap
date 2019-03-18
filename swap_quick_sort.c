@@ -35,7 +35,22 @@ void    sort_toa(t_swap *swap)
         while (i < swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1])
         {
             find_max_min(swap);
-            if (swap->stack_b[swap->top_b] == swap->max)
+            if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] == 2)
+            {
+                if (swap->stack_b[swap->top_b] < swap->stack_b[swap->top_b + 1])
+                {
+                    sb(swap);
+                    pa(swap);
+                    pa(swap);
+                }
+                else
+                {
+                    pa(swap);
+                    pa(swap);
+                }
+                break;
+            }
+            else if (swap->stack_b[swap->top_b] == swap->max)
             {
                 pa(swap);
                 i++;
@@ -48,14 +63,7 @@ void    sort_toa(t_swap *swap)
                 i++;
             }
             else
-    //        else if (swap->stack_b[swap->top_b + 1] == swap->max || \
-    //            swap->stack_b[swap->top_b + 1] == swap->min)
                 sb(swap);
-    //        else
-    //        {
-    //            rb(swap);
-    //            swap->unsorted++;
-    //        }
         }
     while (swap->unsorted)
     {

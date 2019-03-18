@@ -19,9 +19,9 @@ void   sort_a(t_swap *swap)
         if (swap->stack_a[i + 1] > swap->stack_a[i + 2])
         {
             sa(swap);
-            pb(swap);
+            ra(swap);
             sa(swap);
-            pa(swap);
+            rra(swap);
             sa(swap);
         }
         else
