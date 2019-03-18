@@ -51,12 +51,6 @@ void   sort_a(t_swap *swap)
             sa(swap);
             pa(swap);
         }
-//        else
-//        {
-//            pb(swap);
-//            sa(swap);
-//            pa(swap);
-//        }
     }
     swap->sorted = swap->len - swap->top_a;
 }
@@ -66,8 +60,6 @@ int    check_sorted(t_swap *swap)
     int i;
 
     i = swap->top_a;
-//    if (swap->top_a != 0)
-//        return (0);
     while (i < swap->len - 1)
     {
         if (swap->stack_a[i] > swap->stack_a[i + 1])

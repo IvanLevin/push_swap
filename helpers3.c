@@ -21,15 +21,12 @@ void    sort_toa2(t_swap *swap)
     }
     while (check_sorted(swap) == 0)
         rra(swap);
-//    swap->temp--;
     swap->sorted = swap->len - swap->top_a;
 }
 
 int     check_splitted_a(t_swap *swap)
 {
     int i;
-//    if (swap->top_a == swap->sorted)
-//        return (1);
     i = swap->top_a;
     while (i < swap->len - swap->sorted)
     {
@@ -63,11 +60,63 @@ void    put_b(t_swap *swap)
     swap->uns_mas[swap->temp] = swap->len - swap->top_b;
 }
 
+void    sort_toa3(t_swap *swap)
+{
+    int i;
+
+    i = swap->top_b;
+    if (swap->stack_b[i] > swap->stack_b[i + 1] && swap->stack_b[i] < swap->stack_b[i + 2])
+    {
+        pa(swap);
+        sb(swap);
+        pa(swap);
+        sa(swap);
+        pa(swap);
+    }
+    else if (swap->stack_b[i] < swap->stack_b[i + 1] && swap->stack_b[i] < swap->stack_b[i + 2])
+    {
+        if (swap->stack_b[i + 1] > swap->stack_b[i + 2])
+        {
+            sb(swap);
+            pa(swap);
+            sb(swap);
+            pa(swap);
+            pa(swap);
+        }
+    }
+    else if (swap->stack_b[i] > swap->stack_b[i + 1] && swap->stack_b[i] > swap->stack_b[i + 2])
+    {
+        if (swap->stack_b[i + 1] > swap->stack_b[i + 2])
+        {
+            pa(swap);
+            pa(swap);
+            pa(swap);
+        }
+        else
+        {
+            pa(swap);
+            sb(swap);
+            pa(swap);
+            pa(swap);
+        }
+    }
+    else if (swap->stack_b[i] < swap->stack_b[i + 1] && swap->stack_b[i] > swap->stack_b[i + 2])
+    {
+        sb(swap);
+        pa(swap);
+        pa(swap);
+        pa(swap);
+    }
+    swap->temp--;
+    swap->sorted = swap-> len - swap->top_a;
+}
+
 int    b_del(t_swap *swap)
 {
     if (swap->sorted == swap->len)
         return (1);
     int j = 0;
+//    if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] > 3)
     split_stacks_toa(swap);
     printf("%d\n", swap->sorted);
     sort_a(swap);
@@ -77,8 +126,20 @@ int    b_del(t_swap *swap)
 void    split_stack_b(t_swap *swap)
 {
     new_pivot_b(swap);
+    while (swap->stack_a[swap->top_a] != 15)
+    {
+        if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] == 3)
+            sort_toa3(swap);
+        if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] <= 4)
+            sort_toa(swap);
+        new_pivot_b(swap);
+        if (b_del(swap) == 1)
+            break;
+    }
     while (1)
     {
+        if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] == 3)
+            sort_toa3(swap);
         if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] <= 4)
             sort_toa(swap);
         new_pivot_b(swap);

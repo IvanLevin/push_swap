@@ -35,7 +35,7 @@ int     check_elems_down(t_swap *swap, int i)
 
     while (i < swap->len - swap->uns_mas[swap->temp - 1])
     {
-        if (swap->stack_b[i] > swap->pivot)
+        if (swap->stack_b[i] >= swap->pivot)
             return (1);
         i++;
     }
