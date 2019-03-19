@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+#include "push_swap.h"
+
 int 	swap_pivot(t_swap *swap)
 {
 	int		*sort;
@@ -18,23 +20,6 @@ int 	swap_pivot(t_swap *swap)
 	return (sort[swap->pivot]);
 }
 
-int 	check_sort_b(t_swap *swap)
-{
-	int i;
-	int k;
-
-	k = 0;
-	i = swap->top_b;
-	while (k < 3)
-	{
-		if (swap->stack_b[i] < swap->stack_b[i + 1])
-			return (1);
-		i++;
-		k++;
-	}
-	return (0);
-}
-
 int		check_sort(t_swap *swap)
 {
 	int i;
@@ -45,6 +30,40 @@ int		check_sort(t_swap *swap)
 		if (swap->stack_a[i] > swap->stack_a[i + 1])
 			return (1);
 		i++;
+	}
+	return (0);
+}
+
+int 	check_sort_a(t_swap *swap)
+{
+	int i;
+	int j;
+
+	j = 0;
+	i = swap->top_a;
+	while (j < 3)
+	{
+		if (swap->stack_a[i] > swap->stack_a[i + 1])
+			return (1);
+		i++;
+		j++;
+	}
+	return (0);
+}
+
+int 	check_sort_b(t_swap *swap)
+{
+	int i;
+	int j;
+
+	j = 0;
+	i = swap->top_b;
+	while (j < 3)
+	{
+		if (swap->stack_b[i] < swap->stack_b[i + 1])
+			return (1);
+		i++;
+		j++;
 	}
 	return (0);
 }
@@ -61,7 +80,7 @@ void	sort_insert(t_swap *swap)
 		swap->stack_a[3] && swap->stack_a[3] > swap->stack_a[1])
 			ra(swap);
 		else if (swap->stack_a[0] > swap->stack_a[1])
-			sa(swap);
+				sa(swap);
 		else if (swap->stack_a[2] < swap->stack_a[3] || (swap->stack_a[0] < \
 		swap->stack_a[1] && swap->stack_a[1] < swap->stack_a[2] && \
         swap->stack_a[0] > swap->stack_a[3]))
@@ -78,19 +97,19 @@ void	sort_insert(t_swap *swap)
 void 	algorithm_sort(t_swap *swap)
 {
 	sort_print(swap);
- 	if (!check_sort(swap))
+	if (!check_sort(swap))
 		return;
 	if (swap->len == 1)
 		return;
 	else if (swap->len < 4)
-		sort_min(swap);
+			sort_min(swap);
 	else if (swap->len == 4)
 		sort_insert(swap);
 	else
-	{
+		{
 		swap->pivot = swap_pivot(swap);
 		swap_quick_sort(swap);
-	}
+			}
 	sort_print(swap);
 	printf(TURQUOISE"SCORE = %d\n", swap->score);
 }
@@ -99,7 +118,7 @@ int 	swap_quick_sort(t_swap *swap)
 {
 	int		i;
 
-	i = 0;
+	i = 2;
 	while (3 < swap->len - swap->len_b)
 	{
 		put_stack_b(swap);

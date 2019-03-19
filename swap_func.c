@@ -63,9 +63,6 @@ void	swap_stack_a(t_swap *swap)
 	else if (swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->top_a] &&
 	swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 2])
 	{
-		sa(swap);
-		ra(swap);
-		sa(swap);
 		ra(swap);
 		sa(swap);
 		rra(swap);
@@ -107,9 +104,6 @@ void	swap_stack_b(t_swap *swap)
 	else if (swap->stack_b[swap->top_b + 1] > swap->stack_b[swap->top_b] &&
 	swap->stack_b[swap->top_b] > swap->stack_b[swap->top_b + 2])
 	{
-		sb(swap);
-		rb(swap);
-		sb(swap);
 		rb(swap);
 		sb(swap);
 		rrb(swap);
