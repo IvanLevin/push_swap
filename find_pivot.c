@@ -30,7 +30,7 @@ void	pivot_b_test(t_swap *swap)
 
 	i = 0;
 	int len = swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1];
-	if(!(sort = (int *)malloc(sizeof(int) * (size_t)len)))
+	if(!(sort = (int *)malloc(sizeof(int) * len)))
 		return;
 	stack = swap->top_b;
 	while (i < len)
@@ -53,7 +53,7 @@ void	pivot_a(t_swap *swap)
 
 	i = 0;
 	j = swap->top_a;
-	if(!(sort = (int *)malloc(sizeof(int ) * (size_t)swap->check_len)))
+	if(!(sort = (int *)malloc(sizeof(int ) * swap->check_len)))
 		return ;
 	while (i < swap->check_len)
 		sort[i++] = swap->stack_a[j++];

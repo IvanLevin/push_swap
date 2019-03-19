@@ -4,7 +4,7 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define CAP 20
+# define CAP 100000
 # include "libft/libft.h"
 # include "ft_printf/include/ft_printf.h"
 # include <unistd.h>
@@ -47,7 +47,7 @@ void			quick_sort(t_swap *swap);
 void			pivot_b(t_swap *swap);
 void			sort_stack_b(t_swap *swap);
 void			new_pivot_a(t_swap *swap);
-void				pivot_a(t_swap *swap);
+void			pivot_a(t_swap *swap);
 void			pivot_b_test(t_swap *swap);
 void			swap_stack_a(t_swap *swap);
 void			swap_stack_b(t_swap *swap);

@@ -7,7 +7,7 @@ static	void	sort_stack_a_next(t_swap *swap)
 
 	i = -1;
 	j = swap->check_len;
-	while (++i < j && check_sort(swap) == 1)
+	while (++i < j)
 	{
 		if (swap->stack_a[swap->top_a] < swap->pivot)
 		{
