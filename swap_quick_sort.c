@@ -1,152 +1,148 @@
 #include "push_swap.h"
 
-void    put_sorted(t_swap *swap)
+static	void	sort_stack_a_next(t_swap *swap)
 {
-    --swap->temp_cover;
-    while (swap->stack_a[swap->top_a] < swap->min_cover[swap->temp_cover])
-        ra(swap);
-}
+	int i;
+	int j;
 
-int     prior(t_swap *swap)
-{
-    int minlen;
-    int maxlen;
-
-    swap->way = -1;
-    if (swap->len_min - swap->top_b < (swap->len - swap->top_b) / 2 + 1)         // выше середины
-    {
-        swap->way = -1;
-        minlen = swap->len_min - swap->top_b;
-    }
-    else    // ниже середины
-    {
-        swap->way = 1;
-        minlen = swap->len - swap->len_min + 1;
-    }
-    if (swap->len_max - swap->top_b < (swap->len - swap->top_b) / 2 + 1)
-    {
-        swap->way = -1;
-        maxlen = swap->len_max - swap->top_b;
-    }
-    else
-    {
-        swap->way = 1;
-        maxlen = swap->len - swap->len_max + 1;
-    }
-    if (minlen < maxlen)
-        return (swap->stack_b[swap->len_min]);
-    else
-        return (swap->stack_b[swap->len_max]);
-}
-
-int     find_max_min(t_swap *swap)
-{
-    int i;
-
-    i = swap->top_b;
-    swap->len_max = i;
-    swap->len_min = i;
-    swap->max = swap->stack_b[i];
-    swap->min = swap->stack_b[i];
-    while (i < swap->len)
-    {
-        if (swap->stack_b[i] < swap->min)
-        {
-            swap->min = swap->stack_b[i];
-            swap->len_min = i;
-        }
-        if (swap->stack_b[i] > swap->max)
-        {
-            swap->max = swap->stack_b[i];
-            swap->len_max = i;
-        }
-        i++;
-    }
-    return (prior(swap));
-}
-
-void    move_prior_to_the_top(t_swap *swap, int prior)
-{
-    int i;
-
-    i = swap->top_b;
-    while (i < swap->len)
-    {
-        if (swap->stack_b[i] == prior)
-            break;
-        if (swap->way == -1)
-            while (swap->stack_b[i] != prior)
-            {
-                rb(swap);
-            }
-        else
-            while (swap->stack_b[i] != prior) {
-                rrb(swap);
-            }
-    }
-}
-
-void    sort_min_max(t_swap *swap, int prior)
-{
-    int i;
-
-    i = swap->top_b;
-    while (i < swap->len)
-    {
-        move_prior_to_the_top(swap, prior);
-        if (swap->stack_b[i] == prior)
-        {
-            if (swap->stack_b[i] == swap->max) {
-                pa(swap);
-            }
-            else if (swap->stack_b[i] == swap->min)
-            {
-                pa(swap);
-                ra(swap);
-            }
-        }
-        prior = find_max_min(swap);
-        i++;
-    }
-    put_sorted(swap);
-}
-
-void    put_max_and_min(t_swap *swap)
-{
-    int i;
-    int prior;
-
-    i = 0;
-    while (swap->top_b < swap->len)
-    {
-        prior = find_max_min(swap);
-        sort_min_max(swap, prior);
-    }
-}
-
-
-
-int 	swap_quick_sort(t_swap *swap)
-{
-	int		i;
-
-	i = 0;
-	while (i < swap->len)
-    {
-	    split_stacks_tob(swap);
-	    if (swap->top_b < swap->len - 3)
-	        new_pivot(swap);
-	    split_stacks_toa(swap);
-        new_pivot(swap);
-//        split_stacks_toa(swap);
-//        new_pivot(swap);
-        put_max_and_min(swap);
-        new_pivot(swap);
-               split_stacks_tob(swap);
-        break;
+	i = -1;
+	j = swap->check_len;
+	while (++i < j && check_sort(swap) == 1)
+	{
+		if (swap->stack_a[swap->top_a] < swap->pivot)
+		{
+			pb(swap);
+			swap->check_a++;
+			swap->rec--;
+		}
+		else
+		{
+			ra(swap);
+			swap->flag++;
+		}
+		sort_print(swap);
 	}
-	i = 0;
-	printf(TURQUOISE"\n-----------\n");
-	ft_printf("len = %d, SCORE = %d, cover_num = %d",swap->len, swap->score, swap->cover_num);
+	while(swap->flag != 0)
+	{
+		rra(swap);
+		swap->flag--;
+		sort_print(swap);
+	}
+	swap->cap_len++;
+	swap->cap[swap->cap_len] = swap->cap[swap->cap_len - 1] + swap->check_a;
+}
+
+void			sort_stack_a(t_swap *swap)
+{
+	while (1)
+	{
+		swap->flag = 0;
+		swap->check_a = 0;
+		swap->check_len = swap->rec;
+		if (swap->check_len <= 3)
+		{
+			if (check_sort(swap) == 0)
+				return;
+			swap_stack_a(swap);
+			sort_print(swap);
+			return;
+		}
+		else
+		{
+			pivot_a(swap);
+			sort_stack_a_next(swap);
+		}
+	}
+}
+
+static	int	check_min_elem(t_swap *swap)
+{
+	if (swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1] == 2)
+	{
+		if (swap->stack_b[swap->top_b] < swap->stack_b[swap->top_b + 1])
+			sb(swap);
+		pa(swap);
+		pa(swap);
+		swap->cap[swap->cap_len] = swap->cap[swap->cap_len] - 2;
+		return (1);
+	}
 	return (0);
+}
+
+int	check_elems_down(t_swap *swap, int i)
+{
+	i = swap->top_b;
+	while (i < swap->len - swap->cap[swap->cap_len - 1])
+	{
+		if (swap->stack_b[i] >= swap->pivot)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void			sort_stack_b_2(t_swap *swap)
+{
+	if (swap->stack_b[swap->top_b] >= swap->pivot)
+	{
+		pa(swap);
+		swap->rec++;
+	}
+	else
+	{
+		rb(swap);
+		swap->check++;
+	}
+	sort_print(swap);
+}
+
+void			sort_stack_b(t_swap *swap)
+{
+	int i;
+	int flag;
+
+	flag = 1;
+	while (swap->cap[swap->cap_len] > swap->cap[swap->cap_len - 1])
+	{
+		if (check_min_elem(swap) == 1)
+			return;
+		swap->rec = 0;
+		pivot_b_test(swap);
+		i = -1;
+		while (++i < swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1])
+		{
+			if (check_elems_down(swap, i) == 0)
+				break;
+			sort_stack_b_2(swap);
+		}
+		swap->cap[swap->cap_len] = swap->cap[swap->cap_len] - swap->rec;
+		while (swap->check)
+		{
+			if (swap->cap_len == 2 && flag == 1)
+			{
+				swap->check = 0;
+				flag = 0;
+				break;
+			}
+			rrb(swap);
+			swap->check--;
+			sort_print(swap);
+		}
+		sort_stack_a(swap);
+	}
+}
+
+void			quick_sort(t_swap *swap)
+{
+	while (1)
+	{
+		swap->check = 0;
+		pivot_b(swap);
+		if (swap->cap_len < 0)
+			return;
+		sort_stack_b(swap);
+		swap->cap_len--;
+		if (check_sort(swap) == 1)
+			break;
+	}
 }

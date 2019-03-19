@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+#include "push_swap.h"
+
 int 	swap_pivot(t_swap *swap)
 {
 	int		*sort;
@@ -22,12 +24,46 @@ int		check_sort(t_swap *swap)
 {
 	int i;
 
-	i = 0;
+	i = swap->top_a;
 	while (i < swap->len - 1)
 	{
 		if (swap->stack_a[i] > swap->stack_a[i + 1])
 			return (1);
 		i++;
+	}
+	return (0);
+}
+
+int 	check_sort_a(t_swap *swap)
+{
+	int i;
+	int j;
+
+	j = 0;
+	i = swap->top_a;
+	while (j < 3)
+	{
+		if (swap->stack_a[i] > swap->stack_a[i + 1])
+			return (1);
+		i++;
+		j++;
+	}
+	return (0);
+}
+
+int 	check_sort_b(t_swap *swap)
+{
+	int i;
+	int j;
+
+	j = 0;
+	i = swap->top_b;
+	while (j < 3)
+	{
+		if (swap->stack_b[i] < swap->stack_b[i + 1])
+			return (1);
+		i++;
+		j++;
 	}
 	return (0);
 }
@@ -44,7 +80,7 @@ void	sort_insert(t_swap *swap)
 		swap->stack_a[3] && swap->stack_a[3] > swap->stack_a[1])
 			ra(swap);
 		else if (swap->stack_a[0] > swap->stack_a[1])
-			sa(swap);
+				sa(swap);
 		else if (swap->stack_a[2] < swap->stack_a[3] || (swap->stack_a[0] < \
 		swap->stack_a[1] && swap->stack_a[1] < swap->stack_a[2] && \
         swap->stack_a[0] > swap->stack_a[3]))
@@ -58,41 +94,41 @@ void	sort_insert(t_swap *swap)
 	printf(GREEN"\nSCORE = %d", swap->score);
 }
 
-void	sort_min(t_swap *swap)
+void 	algorithm_sort(t_swap *swap)
 {
-	if (swap->len == 2 || (swap->stack_a[0] > swap->stack_a[1] && \
-	swap->stack_a[0] < swap->stack_a[2]))
-		sa(swap);
-	else if (swap->stack_a[0] < swap->stack_a[1] && \
-	swap->stack_a[0] > swap->stack_a[2])
-		rra(swap);
-	else if (swap->stack_a[0] < swap->stack_a[1] && \
-	swap->stack_a[1] > swap->stack_a[2])
-	{
-		rra(swap);
-		sa(swap);
-	}
-	else if (swap->stack_a[0] > swap->stack_a[1] && \
-	swap->stack_a[1] > swap->stack_a[2])
-	{
-		ra(swap);
-		sa(swap);
-	}
-	else if (swap->stack_a[0] > swap->stack_a[2] && \
-	swap->stack_a[2] > swap->stack_a[1])
-		ra(swap);
-}
-
-void 			algorithm_sort(t_swap *swap)
-{
-	if (!check_sort(swap)) // Проверка, если все пришло отсортированное
+	sort_print(swap);
+	if (!check_sort(swap))
 		return;
-	if (swap->len == 1) // Проверка на 1 значение
+	if (swap->len == 1)
 		return;
-	else if (swap->len < 4) // Простая сортировка 2 или 3 значений
-		sort_min(swap);
+	else if (swap->len < 4)
+			sort_min(swap);
 	else if (swap->len == 4)
 		sort_insert(swap);
-	swap->pivot = swap_pivot(swap);
-	swap_quick_sort(swap);
+	else
+		{
+		swap->pivot = swap_pivot(swap);
+		swap_quick_sort(swap);
+			}
+	sort_print(swap);
+	printf(TURQUOISE"SCORE = %d\n", swap->score);
+}
+
+int 	swap_quick_sort(t_swap *swap)
+{
+	int		i;
+
+	i = 2;
+	while (3 < swap->len - swap->len_b)
+	{
+		put_stack_b(swap);
+		new_pivot_a(swap);
+		swap->cap[i++] = swap->len_b;
+		printf("cap = %d \n", swap->cap[i - 1]);
+	}
+	swap->cap_len = i - 1;
+	sort_min(swap);
+	quick_sort(swap);
+
+	return (0);
 }
