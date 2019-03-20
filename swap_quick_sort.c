@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_quick_sort.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:10:53 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 17:24:05 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		sort_stack_b_next(t_swap *swap, int flag)
 		{
 			swap->check = 0;
 			flag = 0;
-			break;
+			break ;
 		}
 		rrb(swap);
 		swap->check--;
@@ -69,14 +69,14 @@ void		sort_stack_b(t_swap *swap)
 	while (swap->cap[swap->cap_len] > swap->cap[swap->cap_len - 1])
 	{
 		if (check_min_elem(swap) == 1)
-			return;
+			return ;
 		swap->rec = 0;
 		pivot_b_test(swap);
 		i = -1;
 		while (++i < swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1])
 		{
 			if (check_elems_down(swap) == 0)
-				break;
+				break ;
 			sort_stack_b_2(swap);
 		}
 		sort_stack_b_next(swap, flag);
@@ -89,13 +89,11 @@ void		quick_sort(t_swap *swap)
 	{
 		swap->check = 0;
 		pivot_b(swap);
-
 		if (swap->cap_len < 0)
-			return;
+			return ;
 		sort_stack_b(swap);
 		swap->cap_len--;
 		if (check_sort(swap) == 1)
-			break;
-		sort_print(swap);
+			break ;
 	}
 }

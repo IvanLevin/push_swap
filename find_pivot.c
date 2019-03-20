@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_pivot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:15:39 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 17:24:05 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:08:25 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,12 @@ void	pivot_b(t_swap *swap)
 	if (swap->cap_len < 0)
 		return ;
 	else if (swap->cap_len - (swap->cap_len - 1) <= 0)
-			swap->swap_len = swap->cap[swap->cap_len];
+		swap->swap_len = swap->cap[swap->cap_len];
 	else if (swap->cap_len == 0)
 		swap->swap_len = swap->cap[swap->cap_len];
 	else
-		swap->swap_len = swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1];
+		swap->swap_len = swap->cap[swap->cap_len] -
+	swap->cap[swap->cap_len - 1];
 }
 
 void	put_stack_b(t_swap *swap)
@@ -99,6 +100,4 @@ void	put_stack_b(t_swap *swap)
 			ra(swap);
 		i++;
 	}
-	sort_print(swap);
 }
-

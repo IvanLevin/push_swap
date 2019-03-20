@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:11:23 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 17:30:42 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static	void	sort_stack_a_next(t_swap *swap)
 		else
 		{
 			if (i + 1 == j)
-				break;
+				break ;
 			ra(swap);
 			swap->flag++;
 		}
@@ -98,12 +98,12 @@ void			sort_stack_a(t_swap *swap)
 				pa(swap);
 				swap_stack_a(swap);
 				swap->cap[swap->cap_len] = swap->cap[swap->cap_len] - 2;
-				return;
+				return ;
 			}
 			if (check_sort(swap) == 0)
-				return;
+				return ;
 			swap_stack_a(swap);
-			return;
+			return ;
 		}
 		else
 		{

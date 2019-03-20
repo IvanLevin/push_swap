@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:08:03 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 17:30:42 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	sort_insert(t_swap *swap)
 		swap->stack_a[3] && swap->stack_a[3] > swap->stack_a[1])
 			ra(swap);
 		else if (swap->stack_a[0] > swap->stack_a[1])
-				sa(swap);
+			sa(swap);
 		else if (swap->stack_a[2] < swap->stack_a[3] || (swap->stack_a[0] < \
 		swap->stack_a[1] && swap->stack_a[1] < swap->stack_a[2] && \
 		swap->stack_a[0] > swap->stack_a[3]))
@@ -64,13 +64,12 @@ void	sort_insert(t_swap *swap)
 
 void	algorithm_sort(t_swap *swap)
 {
-	sort_print(swap);
-	if (!check_sort(swap))
+	if (!(check_sort(swap)))
 		return ;
 	if (swap->len == 1)
 		return ;
 	else if (swap->len < 4)
-			sort_min(swap);
+		sort_min(swap);
 	else if (swap->len == 4)
 		sort_insert(swap);
 	else
@@ -78,8 +77,6 @@ void	algorithm_sort(t_swap *swap)
 		swap->pivot = swap_pivot(swap);
 		swap_quick_sort(swap);
 	}
-	sort_print(swap);
-	printf(TURQUOISE"SCORE = %d\n", swap->score);
 }
 
 int		swap_quick_sort(t_swap *swap)

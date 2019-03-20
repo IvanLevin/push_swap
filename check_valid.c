@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 16:56:55 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 17:30:42 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ static	int		check_same(int var, int *arr_d, int j)
 	return (0);
 }
 
-int			check_malloc(char *arr_d, int argc, char **argv)
+int				check_malloc(int *arr_d, int argc, char **argv, int check)
 {
-	int		check;
 	int		var;
 	int		i;
 
-	check = 0;
 	i = 1;
 	while (argc > 1)
 	{
@@ -54,19 +52,21 @@ int			check_malloc(char *arr_d, int argc, char **argv)
 		check++;
 		argc--;
 	}
+	return (0);
 }
 
 int				check_valid_num(int argc, char **argv)
 {
 	int		*arr_d;
+	int		check;
 
+	check = 0;
 	if (!(arr_d = (int *)malloc(sizeof(int) * (argc - 1))))
 		return (-1);
-	if (check_malloc(arr_d, argc, argv) == -1)
+	if (check_malloc(arr_d, argc, argv, check) == -1)
 		return (-1);
 	else
 		return (0);
-	return (0);
 }
 
 static	int		check_valid_arg(char **argv, int len, int i)
@@ -92,7 +92,6 @@ int				check_valid(int argc, char **argv)
 
 	i = 1;
 	len = argc;
-
 	if (argc < 1)
 		return (-1);
 	while (argc > 1)

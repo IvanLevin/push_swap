@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:12 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 17:30:42 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:08:25 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static	void	initialize_swap(t_swap *swap)
 	swap->check = 0;
 }
 
-static	int	mem_allocation(t_swap *swap)
+static	int		mem_allocation(t_swap *swap)
 {
 	int	i;
 
@@ -59,7 +59,7 @@ static	int	mem_allocation(t_swap *swap)
 	return (0);
 }
 
-void	push_swap(int argc, char **argv)
+void			push_swap(int argc, char **argv)
 {
 	t_swap	*swap;
 	int		var;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_rules_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:33:25 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 17:34:37 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	rr(t_swap *sw_a, t_swap *sw_b)
 
 	i = 0;
 	temp = sw_b->stack_b[i];
-
 	while (sw_b->len - 1 > i)
 	{
 		sw_b->stack_b[i] = sw_b->stack_b[i + 1];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:09:47 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 17:24:02 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	swap_stack_a_2(t_swap *swap)
 	}
 	else if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
 		sa(swap);
-
 }
 
 void	sort_min_2(t_swap *swap)
@@ -53,7 +52,7 @@ void	sort_min(t_swap *swap)
 	swap->stack_a[swap->top_a + 2]))
 		sa(swap);
 	else if (swap->len_a != 2 && (swap->stack_a[swap->top_a] <
-	swap->stack_a[swap->top_a +	1] && \
+	swap->stack_a[swap->top_a + 1] && \
 	swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 2]))
 		rra(swap);
 	else if (swap->len_a != 2 && (swap->stack_a[swap->top_a] <

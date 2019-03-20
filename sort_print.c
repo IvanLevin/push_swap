@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   sort_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:16:46 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 17:24:05 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void 	sort_print(t_swap *swap)
+void	sort_print(t_swap *swap)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	printf(GREEN"        ----------------\n");
