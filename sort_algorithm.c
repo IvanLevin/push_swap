@@ -1,7 +1,5 @@
 #include "push_swap.h"
 
-#include "push_swap.h"
-
 int 	swap_pivot(t_swap *swap)
 {
 	int		*sort;
@@ -34,46 +32,8 @@ int		check_sort(t_swap *swap)
 	return (0);
 }
 
-int 	check_sort_a(t_swap *swap)
-{
-	int i;
-	int j;
-
-	j = 0;
-	i = swap->top_a;
-	while (j < 3)
-	{
-		if (swap->stack_a[i] > swap->stack_a[i + 1])
-			return (1);
-		i++;
-		j++;
-	}
-	return (0);
-}
-
-int 	check_sort_b(t_swap *swap)
-{
-	int i;
-	int j;
-
-	j = 0;
-	i = swap->top_b;
-	while (j < 3)
-	{
-		if (swap->stack_b[i] < swap->stack_b[i + 1])
-			return (1);
-		i++;
-		j++;
-	}
-	return (0);
-}
-
 void	sort_insert(t_swap *swap)
 {
-	int	i;
-
-	i = 0;
-
 	while (check_sort(swap) == 1)
 	{
 		if (swap->stack_a[0] < swap->stack_a[1] && swap->stack_a[0] < \
@@ -89,7 +49,6 @@ void	sort_insert(t_swap *swap)
 		swap->stack_a[2] > swap->stack_a[3])
 			ra(swap);
 	}
-//	printf(GREEN"\nSCORE = %d", swap->score);
 }
 
 void 	algorithm_sort(t_swap *swap)
@@ -109,7 +68,7 @@ void 	algorithm_sort(t_swap *swap)
 		swap_quick_sort(swap);
 			}
 	sort_print(swap);
-//	printf(TURQUOISE"SCORE = %d\n", swap->score);
+	printf(TURQUOISE"SCORE = %d\n", swap->score);
 }
 
 int 	swap_quick_sort(t_swap *swap)

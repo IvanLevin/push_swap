@@ -67,7 +67,6 @@ void	push_swap(int argc, char **argv)
 		var = ft_atoi(argv[i++]);
 		swap->stack_a[j++] = var;
 	}
-	i = 0;
 	algorithm_sort(swap);
 	free_struct(swap);
 }
