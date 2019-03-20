@@ -89,9 +89,7 @@ void	sort_insert(t_swap *swap)
 		swap->stack_a[2] > swap->stack_a[3])
 			ra(swap);
 	}
-	while (i < 4)
-		ft_printf(TURQUOISE"%d ", swap->stack_a[i++]);
-	printf(GREEN"\nSCORE = %d", swap->score);
+//	printf(GREEN"\nSCORE = %d", swap->score);
 }
 
 void 	algorithm_sort(t_swap *swap)
@@ -111,7 +109,7 @@ void 	algorithm_sort(t_swap *swap)
 		swap_quick_sort(swap);
 			}
 	sort_print(swap);
-	printf(TURQUOISE"SCORE = %d\n", swap->score);
+//	printf(TURQUOISE"SCORE = %d\n", swap->score);
 }
 
 int 	swap_quick_sort(t_swap *swap)
@@ -124,7 +122,6 @@ int 	swap_quick_sort(t_swap *swap)
 		put_stack_b(swap);
 		new_pivot_a(swap);
 		swap->cap[i++] = swap->len_b;
-		printf("cap = %d \n", swap->cap[i - 1]);
 	}
 	swap->cap_len = i - 1;
 	sort_min(swap);

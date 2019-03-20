@@ -74,8 +74,8 @@ void	swap_stack_a(t_swap *swap)
 
 void	swap_stack_b(t_swap *swap)
 {
-	if (swap->stack_b[swap->top_b] > swap->stack_b[swap->top_b + 1] &&
-	swap->stack_b[swap->top_b + 1] > swap->stack_b[swap->top_b + 2])
+	if (swap->stack_b[swap->top_b + 2] > swap->stack_b[swap->top_b + 1] &&
+	swap->stack_b[swap->top_b + 1] > swap->stack_b[swap->top_b])
 	{
 		sb(swap);
 		rb(swap);
@@ -83,10 +83,9 @@ void	swap_stack_b(t_swap *swap)
 		rrb(swap);
 		sb(swap);
 	}
-	else if (swap->stack_b[swap->top_b] > swap->stack_b[swap->top_b + 2] &&
+	if (swap->stack_b[swap->top_b] > swap->stack_b[swap->top_b + 2] &&
 	swap->stack_b[swap->top_b + 2] > swap->stack_b[swap->top_b + 1])
 	{
-		sb(swap);
 		rb(swap);
 		sb(swap);
 		rrb(swap);
@@ -94,21 +93,23 @@ void	swap_stack_b(t_swap *swap)
 	else if (swap->stack_b[swap->top_b + 1] > swap->stack_b[swap->top_b + 2] &&
 	swap->stack_b[swap->top_b + 2] > swap->stack_b[swap->top_b])
 	{
+		sb(swap);
 		rb(swap);
 		sb(swap);
 		rrb(swap);
 	}
 	else if (swap->stack_b[swap->top_b + 2] > swap->stack_b[swap->top_b] &&
 	swap->stack_b[swap->top_b] > swap->stack_b[swap->top_b + 1])
-		sb(swap);
-	else if (swap->stack_b[swap->top_b + 1] > swap->stack_b[swap->top_b] &&
-	swap->stack_b[swap->top_b] > swap->stack_b[swap->top_b + 2])
 	{
 		rb(swap);
 		sb(swap);
 		rrb(swap);
 		sb(swap);
+
 	}
+	else if (swap->stack_b[swap->top_b + 1] > swap->stack_b[swap->top_b] &&
+	swap->stack_b[swap->top_b] > swap->stack_b[swap->top_b + 2])
+		sb(swap);
 	else if (swap->stack_b[swap->top_b] > swap->stack_b[swap->top_b + 1])
 		sb(swap);
 }

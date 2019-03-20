@@ -50,5 +50,6 @@ int			*ft_selection_sort(int *arr, int size)
 		arr[i] = sw;
 		i++;
 	}
+	free(arr);
 	return (new_arr);
 }

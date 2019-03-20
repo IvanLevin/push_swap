@@ -14,7 +14,7 @@ int		main(int argc, char **argv)
 		ft_putendl("\e[0;31mError");
 		return (-1);
 	}
-	ft_printf(BLUE);
+//	ft_printf(BLUE);
 	push_swap(argc, argv);
 	return 0;
 }

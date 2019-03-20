@@ -1,5 +1,23 @@
 #include "push_swap.h"
 
+int 	sort_stack_1(t_swap *swap)
+{
+	if (swap->rec == 4)
+	{
+		if (swap->stack_a[swap->top_a] < swap->pivot &&
+		swap->stack_a[swap->top_a + 1] < swap->pivot)
+		{
+			pb(swap);
+			pb(swap);
+			swap->rec = swap->rec - 2;
+			swap->cap_len++;
+			swap->cap[swap->cap_len] = swap->cap[swap->cap_len - 1] + 2;
+			return (1);
+		}
+	}
+	return (0);
+}
+
 static	void	sort_stack_a_next(t_swap *swap)
 {
 	int i;
@@ -7,6 +25,8 @@ static	void	sort_stack_a_next(t_swap *swap)
 
 	i = -1;
 	j = swap->check_len;
+	if (sort_stack_1(swap) == 1)
+		return;
 	while (++i < j)
 	{
 		if (swap->stack_a[swap->top_a] < swap->pivot)
@@ -22,13 +42,11 @@ static	void	sort_stack_a_next(t_swap *swap)
 			ra(swap);
 			swap->flag++;
 		}
-//		sort_print(swap);
 	}
-	while(swap->flag != 0)
+		while(swap->flag != 0)
 	{
 		rra(swap);
 		swap->flag--;
-//		sort_print(swap);
 	}
 	swap->cap_len++;
 	swap->cap[swap->cap_len] = swap->cap[swap->cap_len - 1] + swap->check_a;
@@ -38,17 +56,24 @@ void			sort_stack_a(t_swap *swap)
 {
 	while (1)
 	{
-		swap->flag = 0;
 		swap->check_a = 0;
 		swap->check_len = swap->rec;
 		if (swap->check_len <= 3)
 		{
+			if (swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1] == 2)
+				{
+					swap_stack_a(swap);
+					pa(swap);
+					pa(swap);
+					swap_stack_a(swap);
+					swap->cap[swap->cap_len] = swap->cap[swap->cap_len] - 2;
+					return;
+				}
 			if (check_sort(swap) == 0)
 				return;
 			swap_stack_a(swap);
-//			sort_print(swap);
 			return;
-		}
+			}
 		else
 		{
 			pivot_a(swap);
@@ -71,14 +96,19 @@ static	int	check_min_elem(t_swap *swap)
 	return (0);
 }
 
-int	check_elems_down(t_swap *swap, int i)
+int	check_elems_down(t_swap *swap)
 {
+	int i;
+	int j;
+
+	j = 0;
 	i = swap->top_b;
-	while (i < swap->len - swap->cap[swap->cap_len - 1])
+	while (j < swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1])
 	{
 		if (swap->stack_b[i] >= swap->pivot)
 			return (1);
 		i++;
+		j++;
 	}
 	return (0);
 }
@@ -95,7 +125,6 @@ void			sort_stack_b_2(t_swap *swap)
 		rb(swap);
 		swap->check++;
 	}
-//	sort_print(swap);
 }
 
 void			sort_stack_b(t_swap *swap)
@@ -113,7 +142,7 @@ void			sort_stack_b(t_swap *swap)
 		i = -1;
 		while (++i < swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1])
 		{
-			if (check_elems_down(swap, i) == 0)
+			if (check_elems_down(swap) == 0)
 				break;
 			sort_stack_b_2(swap);
 		}
@@ -128,7 +157,6 @@ void			sort_stack_b(t_swap *swap)
 			}
 			rrb(swap);
 			swap->check--;
-//			sort_print(swap);
 		}
 		sort_stack_a(swap);
 	}
@@ -138,14 +166,17 @@ void			quick_sort(t_swap *swap)
 {
 	while (1)
 	{
+//		swap_stack_b(swap);
 		swap->check = 0;
 		pivot_b(swap);
+
 		if (swap->cap_len < 0)
 			return;
 		sort_stack_b(swap);
 		swap->cap_len--;
 		if (check_sort(swap) == 1)
 			break;
-		printf("-----------------\n");
+		sort_print(swap);
+//		printf("-----------------\n");
 	}
 }
