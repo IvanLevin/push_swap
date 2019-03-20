@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/20 17:06:12 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/03/20 17:30:42 by gkshleri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void free_struct(t_swap *swap)
+static	void	free_struct(t_swap *swap)
 {
 	free(swap->stack_a);
 	free(swap->stack_b);
 }
 
-static void	initialize_swap(t_swap *swap)
+static	void	initialize_swap(t_swap *swap)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < swap->len)
@@ -38,11 +50,11 @@ static	int	mem_allocation(t_swap *swap)
 	int	i;
 
 	i = 0;
-	if(!(swap->stack_a = (int *)malloc(sizeof(int) * swap->len)))
+	if (!(swap->stack_a = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
-	if(!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
+	if (!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
-	if(!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
+	if (!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
 	return (0);
 }
@@ -50,11 +62,11 @@ static	int	mem_allocation(t_swap *swap)
 void	push_swap(int argc, char **argv)
 {
 	t_swap	*swap;
-	int 	var;
-	int 	i;
-	int 	j;
+	int		var;
+	int		i;
+	int		j;
 
-	if(!(swap = (t_swap *)malloc(sizeof(t_swap))))
+	if (!(swap = (t_swap *)malloc(sizeof(t_swap))))
 		return ;
 	swap->len = argc - 1;
 	if (mem_allocation(swap) == -1)

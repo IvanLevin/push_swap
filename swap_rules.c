@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap_rules.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/20 17:15:22 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/03/20 17:32:46 by gkshleri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sa(t_swap *sw_a)
 {
 	int		i;
-	int 	temp;
+	int		temp;
 
 	i = sw_a->top_a;
 	if (sw_a->len - sw_a->top_a <= 1)
@@ -18,7 +30,7 @@ void	sa(t_swap *sw_a)
 void	sb(t_swap *sw_b)
 {
 	int		i;
-	int 	temp;
+	int		temp;
 
 	i = sw_b->top_b;
 	if (sw_b->len - sw_b->top_b <= 1)
@@ -28,30 +40,6 @@ void	sb(t_swap *sw_b)
 	sw_b->stack_b[i] = temp;
 	sw_b->score++;
 	ft_printf("sb\n");
-}
-
-void	ss(t_swap *swap)
-{
-	int		i;
-	int 	temp;
-
-	i = swap->top_b;
-	if (swap->len - swap->top_b <= 1)
-		return ;
-	temp = swap->stack_b[i + 1];
-	swap->stack_b[i + 1] = swap->stack_b[i];
-	swap->stack_b[i] = temp;
-	swap->score++;
-	i = 0;
-	temp = 0;
-	i = swap->top_a;
-	if (swap->len - swap->top_a <= 1)
-		return ;
-	temp = swap->stack_a[i + 1];
-	swap->stack_a[i + 1] = swap->stack_a[i];
-	swap->stack_a[i] = temp;
-	swap->score++;
-	ft_printf("ss\n");
 }
 
 void	pa(t_swap *swap)
@@ -69,8 +57,6 @@ void	pa(t_swap *swap)
 
 void	pb(t_swap *swap)
 {
-
-
 	if (swap->len - swap->top_a <= 0)
 		return ;
 	swap->stack_b[swap->top_b - 1] = swap->stack_a[swap->top_a];
@@ -84,8 +70,8 @@ void	pb(t_swap *swap)
 
 void	ra(t_swap *sw_a)
 {
-	int 	i;
-	int 	temp;
+	int		i;
+	int		temp;
 
 	i = sw_a->top_a;
 	temp = sw_a->stack_a[i];
@@ -97,106 +83,4 @@ void	ra(t_swap *sw_a)
 	sw_a->stack_a[i] = temp;
 	sw_a->score++;
 	ft_printf("ra\n");
-}
-
-void	rb(t_swap *sw_b)
-{
-	int 	i;
-	int 	temp;
-
-	i = sw_b->top_b;
-	temp = sw_b->stack_b[i];
-	while (sw_b->len - 1 > i)
-	{
-		sw_b->stack_b[i] = sw_b->stack_b[i + 1];
-		i++;
-	}
-	sw_b->stack_b[i] = temp;
-	sw_b->score++;
-	ft_printf("rb\n");
-}
-
-void	rr(t_swap *sw_a, t_swap *sw_b)
-{
-	int 	i;
-	int 	temp;
-
-	i = 0;
-	temp = sw_b->stack_b[i];
-
-	while (sw_b->len - 1 > i)
-	{
-		sw_b->stack_b[i] = sw_b->stack_b[i + 1];
-		i++;
-	}
-	sw_b->stack_b[i] = temp;
-	i = 0;
-	temp = sw_a->stack_a[i];
-	while (sw_a->len - 1 > i)
-	{
-		sw_a->stack_a[i] = sw_a->stack_a[i + 1];
-		i++;
-	}
-	sw_a->stack_a[i] = temp;
-	sw_a->score++;
-	ft_printf("rr\n");
-}
-
-void	rra(t_swap *sw_a)
-{
-	int i;
-	int temp;
-
-	i = 1;
-	temp = sw_a->stack_a[sw_a->len - 1];
-	while (sw_a->len - sw_a->top_a > i)
-	{
-		sw_a->stack_a[sw_a->len - i] = sw_a->stack_a[sw_a->len - i - 1];
-		i++;
-	}
-	sw_a->stack_a[sw_a->len - i] = temp;
-	sw_a->score++;
-	ft_printf("rra\n");
-}
-
-void	rrb(t_swap *sw_b)
-{
-	int i;
-	int temp;
-
-	i = 1;
-	temp = sw_b->stack_b[sw_b->len - 1];
-	while (sw_b->len - sw_b->top_b > i)
-	{
-		sw_b->stack_b[sw_b->len - i] = sw_b->stack_b[sw_b->len - i - 1];
-		i++;
-	}
-	sw_b->stack_b[sw_b->len - i] = temp;
-	sw_b->score++;
-	ft_printf("rrb\n");
-}
-
-void	rrr(t_swap *sw_a, t_swap *sw_b)
-{
-	int i;
-	int temp;
-
-	i = 1;
-	temp = sw_a->stack_a[sw_a->len - 1];
-	while (sw_a->len > i)
-	{
-		sw_a->stack_a[sw_a->len - i] = sw_a->stack_a[sw_a->len - i - 1];
-		i++;
-	}
-	sw_a->stack_a[sw_a->len - i] = temp;
-	i = 1;
-	temp = sw_b->stack_b[sw_b->len - 1];
-	while (sw_b->len > i)
-	{
-		sw_b->stack_b[sw_b->len - i] = sw_b->stack_a[sw_b->len - i - 1];
-		i++;
-	}
-	sw_b->stack_b[sw_b->len - i] = temp;
-	sw_a->score++;
-	ft_printf("rrr\n");
 }

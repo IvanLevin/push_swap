@@ -1,6 +1,14 @@
-//
-// Created by Germaine Kshlerin on 2019-02-26.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/20 17:06:30 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/03/20 17:24:05 by gkshleri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -14,22 +22,22 @@
 typedef struct	s_swap
 {
 	int			*stack_a;
-	int 		*stack_b;
-	int 		cap[CAP];
-	int 		cap_len;
-	int 		len;
-	int 		pivot;
-	int 		score;
-	int 		top_b;
-	int 		len_b;
-	int 		top_a;
-	int 		len_a;
-	int 		check_a;
-	int 		check;
-	int 		rec;
-	int 		swap_len;
-	int 		flag;
-	int 		check_len;
+	int			*stack_b;
+	int			cap[CAP];
+	int			cap_len;
+	int			len;
+	int			pivot;
+	int			score;
+	int			top_b;
+	int			len_b;
+	int			top_a;
+	int			len_a;
+	int			check_a;
+	int			check;
+	int			rec;
+	int			swap_len;
+	int			flag;
+	int			check_len;
 
 }				t_swap;
 

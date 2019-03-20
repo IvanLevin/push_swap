@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap_quick_sort_a.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/20 17:11:23 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/03/20 17:30:42 by gkshleri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	check_min_elem(t_swap *swap)
+int				check_min_elem(t_swap *swap)
 {
 	if (swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1] == 2)
 	{
@@ -14,7 +26,7 @@ int	check_min_elem(t_swap *swap)
 	return (0);
 }
 
-int 	sort_stack_1(t_swap *swap)
+int				sort_stack_1(t_swap *swap)
 {
 	if (swap->rec == 4)
 	{
@@ -34,7 +46,7 @@ int 	sort_stack_1(t_swap *swap)
 
 static	void	sort_stack_a_2(t_swap *swap)
 {
-	while(swap->flag != 0)
+	while (swap->flag != 0)
 	{
 		rra(swap);
 		swap->flag--;
@@ -45,13 +57,13 @@ static	void	sort_stack_a_2(t_swap *swap)
 
 static	void	sort_stack_a_next(t_swap *swap)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	i = -1;
 	j = swap->check_len;
 	if (sort_stack_1(swap) == 1)
-		return;
+		return ;
 	while (++i < j)
 	{
 		if (swap->stack_a[swap->top_a] < swap->pivot)

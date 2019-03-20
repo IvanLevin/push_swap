@@ -1,6 +1,16 @@
-#include <stdio.h>
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/20 17:15:51 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/03/20 17:30:42 by gkshleri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "push_swap.h"
 
 int		main(int argc, char **argv)
 {
@@ -16,5 +26,5 @@ int		main(int argc, char **argv)
 	}
 //	ft_printf(BLUE);
 	push_swap(argc, argv);
-	return 0;
+	return (0);
 }

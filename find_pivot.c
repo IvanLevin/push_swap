@@ -1,19 +1,27 @@
-//
-// Created by Germaine Kshlerin on 2019-03-15.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_pivot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/20 17:15:39 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/03/20 17:24:05 by gkshleri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	new_pivot_a(t_swap *swap)
 {
 	int		*sort;
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = swap->top_a;
-	if(!(sort = (int *)malloc(sizeof(int) * swap->len_a)))
-		return;
+	if (!(sort = (int *)malloc(sizeof(int) * swap->len_a)))
+		return ;
 	while (i < swap->len_a)
 		sort[i++] = swap->stack_a[j++];
 	sort = ft_selection_sort(sort, swap->len_a);
@@ -24,14 +32,15 @@ void	new_pivot_a(t_swap *swap)
 
 void	pivot_b_test(t_swap *swap)
 {
-	int 	*sort;
-	int 	i;
-	int 	stack;
+	int		*sort;
+	int		i;
+	int		stack;
+	int		len;
 
 	i = 0;
-	int len = swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1];
-	if(!(sort = (int *)malloc(sizeof(int) * len)))
-		return;
+	len = swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1];
+	if (!(sort = (int *)malloc(sizeof(int) * len)))
+		return ;
 	stack = swap->top_b;
 	while (i < len)
 	{
@@ -48,12 +57,12 @@ void	pivot_b_test(t_swap *swap)
 void	pivot_a(t_swap *swap)
 {
 	int		*sort;
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = swap->top_a;
-	if(!(sort = (int *)malloc(sizeof(int ) * swap->check_len)))
+	if (!(sort = (int *)malloc(sizeof(int ) * swap->check_len)))
 		return ;
 	while (i < swap->check_len)
 		sort[i++] = swap->stack_a[j++];
@@ -66,20 +75,19 @@ void	pivot_a(t_swap *swap)
 void	pivot_b(t_swap *swap)
 {
 	if (swap->cap_len < 0)
-		return;
+		return ;
 	else if (swap->cap_len - (swap->cap_len - 1) <= 0)
 			swap->swap_len = swap->cap[swap->cap_len];
 	else if (swap->cap_len == 0)
 		swap->swap_len = swap->cap[swap->cap_len];
 	else
 		swap->swap_len = swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1];
-
 }
 
 void	put_stack_b(t_swap *swap)
 {
-	int 	len;
-	int 	i;
+	int		len;
+	int		i;
 
 	i = 0;
 	len = swap->len_a;
@@ -93,3 +101,4 @@ void	put_stack_b(t_swap *swap)
 	}
 	sort_print(swap);
 }
+

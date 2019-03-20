@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap_quick_sort.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkshleri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/20 17:10:53 by gkshleri          #+#    #+#             */
+/*   Updated: 2019/03/20 17:24:05 by gkshleri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static	int		check_elems_down(t_swap *swap)
+static	int	check_elems_down(t_swap *swap)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	j = 0;
 	i = swap->top_b;
@@ -17,7 +29,7 @@ static	int		check_elems_down(t_swap *swap)
 	return (0);
 }
 
-void			sort_stack_b_2(t_swap *swap)
+void		sort_stack_b_2(t_swap *swap)
 {
 	if (swap->stack_b[swap->top_b] >= swap->pivot)
 	{
@@ -48,10 +60,10 @@ void		sort_stack_b_next(t_swap *swap, int flag)
 	sort_stack_a(swap);
 }
 
-void			sort_stack_b(t_swap *swap)
+void		sort_stack_b(t_swap *swap)
 {
-	int i;
-	int flag;
+	int		i;
+	int		flag;
 
 	flag = 1;
 	while (swap->cap[swap->cap_len] > swap->cap[swap->cap_len - 1])
@@ -71,7 +83,7 @@ void			sort_stack_b(t_swap *swap)
 	}
 }
 
-void			quick_sort(t_swap *swap)
+void		quick_sort(t_swap *swap)
 {
 	while (1)
 	{
