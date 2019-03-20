@@ -4,7 +4,7 @@ int 	swap_pivot(t_swap *swap)
 {
 	int		*sort;
 	int 	i;
-
+	int     ret;
 
 	sort = (int *)malloc(sizeof(int) * swap->len);
 	i = 0;
@@ -15,7 +15,9 @@ int 	swap_pivot(t_swap *swap)
 	}
 	sort = ft_selection_sort(sort, swap->len);
 	swap->pivot = (0 + swap->len) / 2;
-	return (sort[swap->pivot]);
+	ret = sort[swap->pivot];
+	free(sort);
+	return (ret);
 }
 
 int		check_sort(t_swap *swap)
@@ -53,9 +55,6 @@ void	sort_insert(t_swap *swap)
 		swap->stack_a[2] > swap->stack_a[3])
 			ra(swap);
 	}
-	while (i < 4)
-		ft_printf(TURQUOISE"%d ", swap->stack_a[i++]);
-	printf(GREEN"\nSCORE = %d", swap->score);
 }
 
 void	sort_min(t_swap *swap)

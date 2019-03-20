@@ -13,7 +13,7 @@ void	sa(t_swap *sw_a)
 	sw_a->stack_a[i] = temp;
 	sw_a->score++;
 	ft_printf("sa\n");
-    print_stacks(sw_a);
+//    print_stacks(sw_a);
 }
 
 void	sb(t_swap *sw_b)
@@ -29,7 +29,7 @@ void	sb(t_swap *sw_b)
 	sw_b->stack_b[i] = temp;
 	sw_b->score++;
 	ft_printf("sb\n");
-    print_stacks(sw_b);
+//    print_stacks(sw_b);
 }
 
 void	ss(t_swap *swap) // ИСПРАВИТЬ!!!
@@ -50,7 +50,7 @@ void	ss(t_swap *swap) // ИСПРАВИТЬ!!!
 	swap->stack_b[i] = temp;
 	swap->score++;
 	ft_printf("ss\n");
-    print_stacks(swap);
+//    print_stacks(swap);
 }
 
 void	pa(t_swap *swap)
@@ -62,7 +62,7 @@ void	pa(t_swap *swap)
 	swap->score++;
 	swap->top_b++;
 	ft_printf("pa\n");
-    print_stacks(swap);
+//    print_stacks(swap);
 }
 
 void	pb(t_swap *swap)
@@ -74,7 +74,7 @@ void	pb(t_swap *swap)
 	swap->top_a++;
 	swap->top_b--;
 	ft_printf("pb\n");
-    print_stacks(swap);
+//    print_stacks(swap);
 }
 
 void	ra(t_swap *sw_a)
@@ -92,7 +92,7 @@ void	ra(t_swap *sw_a)
 	sw_a->stack_a[i] = temp;
 	sw_a->score++;
 	ft_printf("ra\n");
-    print_stacks(sw_a);
+//    print_stacks(sw_a);
 }
 
 void	rb(t_swap *sw_b)
@@ -111,7 +111,7 @@ void	rb(t_swap *sw_b)
 	sw_b->stack_b[i] = temp;
 	sw_b->score++;
 	ft_printf("rb\n");
-    print_stacks(sw_b);
+//    print_stacks(sw_b);
 }
 
 void	rr(t_swap *swap) // ПЕРЕДЕЛАТЬ!!!
@@ -139,7 +139,7 @@ void	rr(t_swap *swap) // ПЕРЕДЕЛАТЬ!!!
 	swap->stack_b[j] = temp2;
 	swap->score++;
 	ft_printf("rr\n");
-    print_stacks(swap);
+//    print_stacks(swap);
 }
 
 void	rra(t_swap *sw_a) // ПЕРЕДЕЛАТЬ!!!
@@ -157,7 +157,7 @@ void	rra(t_swap *sw_a) // ПЕРЕДЕЛАТЬ!!!
 	sw_a->stack_a[sw_a->len - i] = temp;
 	sw_a->score++;
 	ft_printf("rra\n");
-    print_stacks(sw_a);
+//    print_stacks(sw_a);
 }
 
 void	rrb(t_swap *sw_b)
@@ -175,7 +175,7 @@ void	rrb(t_swap *sw_b)
 	sw_b->stack_b[sw_b->top_b] = temp;
 	sw_b->score++;
 	ft_printf("rrb\n");
-    print_stacks(sw_b);
+//    print_stacks(sw_b);
 }
 
 void	rrr(t_swap *sw_a, t_swap *sw_b) // ПЕРЕДЕЛАТЬ!!!
@@ -201,5 +201,5 @@ void	rrr(t_swap *sw_a, t_swap *sw_b) // ПЕРЕДЕЛАТЬ!!!
 	sw_b->stack_b[sw_b->len - i] = temp;
 	sw_a->score++;
 	ft_printf("rrr\n");
-    print_stacks(sw_a);
+//    print_stacks(sw_a);
 }

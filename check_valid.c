@@ -47,6 +47,7 @@ int				check_valid_num(int argc, char **argv)
 		i++;
 		argc--;
 	}
+	free(arr_d);
 	return (0);
 }
 

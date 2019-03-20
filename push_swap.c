@@ -4,6 +4,7 @@ static void free_struct(t_swap *swap)
 {
 	free(swap->stack_a);
 	free(swap->stack_b);
+	free(swap->uns_mas);
 }
 
 static void	initialize_swap(t_swap *swap)
@@ -72,4 +73,5 @@ void	push_swap(int argc, char **argv)
 	}
 	algorithm_sort(swap);
 	free_struct(swap);
+	free(swap);
 }

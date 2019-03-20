@@ -7,8 +7,6 @@ int     split_stacks_tob(t_swap *swap)
         if (swap->stack_a[swap->top_a] <= swap->pivot)
         {
             pb(swap);
-//            if (swap->top_b < 98 && swap->stack_b[swap->top_b] < swap->stack_b[swap->top_b + 1])
-//                sa(swap);
         }
         else
             ra(swap);
@@ -36,7 +34,6 @@ int     check_splitted(t_swap *swap)
 int     check_elems_down(t_swap *swap, int i)
 {
     i = swap->top_b;
-
     while (i < swap->len - swap->uns_mas[swap->temp - 1])
     {
         if (swap->stack_b[i] >= swap->pivot)
@@ -89,8 +86,6 @@ int     split_stacks_toa(t_swap *swap)
             rb(swap);
             swap->unsorted++;
         }
-//        if (swap->stack_b[swap->top_b] < swap->stack_b[swap->top_b + 1])
-//            sb(swap);
         i++;
     }
     while (swap->unsorted)
@@ -106,21 +101,6 @@ int     split_stacks_toa(t_swap *swap)
         put_b(swap);
     }
     return (0);
-}
-
-int     check_splitted_b(t_swap *swap)
-{
-    int i;
-
-    i = swap->top_b;
-    while (i < swap->top_b + swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1])
-    {
-        if (swap->stack_b[i] >= swap->pivot)
-            return (0);
-        else
-            i++;
-    }
-    return (1);
 }
 
 void     new_pivot(t_swap *swap)
@@ -139,12 +119,13 @@ void     new_pivot(t_swap *swap)
     }
     sort = ft_selection_sort(sort, swap->len - swap->top_a);
     i = 0;
-    while (i < swap->len - swap->top_a)
-    {
-        ft_printf("%d ", sort[i]);
-        i++;
-    }
+//    while (i < swap->len - swap->top_a)
+//    {
+//        ft_printf("%d ", sort[i]);
+//        i++;
+//    }
     swap->pivot = sort[(swap->len - swap->top_a) / 2];
+    free(sort);
 }
 
 void     new_pivot_a(t_swap *swap)
@@ -165,12 +146,13 @@ void     new_pivot_a(t_swap *swap)
     }
     sort = ft_selection_sort(sort, (n - swap->top_a));
     i = 0;
-    while (i < (n - swap->top_a))
-    {
-        ft_printf("%d ", sort[i]);
-        i++;
-    }
+//    while (i < (n - swap->top_a))
+//    {
+//        ft_printf("%d ", sort[i]);
+//        i++;
+//    }
     swap->pivot = sort[(n - swap->top_a)/ 2];
+    free(sort);
 }
 
 void     new_pivot_b(t_swap *swap)
@@ -180,25 +162,31 @@ void     new_pivot_b(t_swap *swap)
     int j;
 
     j = 0;
-    sort = (int *)malloc(sizeof(int) * (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1]));
+    sort = NULL;
+    if (swap->temp > 0)
+        sort = (int *)malloc(sizeof(int) * (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1]));
     i = swap->top_b;
-    while (i < swap->top_b + swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1])
-    {
-        if (i < swap->len)
-            sort[j++] = swap->stack_b[i];
-        else
-            break;
-        i++;
-    }
-    sort = ft_selection_sort(sort, swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1]);
+    if (swap->temp > 0)
+        while (i < swap->top_b + swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1])
+        {
+            if (i < swap->len)
+                sort[j++] = swap->stack_b[i];
+            else
+                break;
+            i++;
+        }
+    if (swap->temp > 0)
+        sort = ft_selection_sort(sort, swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1]);
     i = 0;
-    while (i < swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1])
-    {
-        ft_printf("%d ", sort[i]);
-        i++;
-    }
-    ft_printf("\n");
-    swap->pivot = sort[j / 2];
+//    while (i < swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1])
+//    {
+//        ft_printf("%d ", sort[i]);
+//        i++;
+//    }
+//    ft_printf("\n");
+    if (j != 0)
+        swap->pivot = sort[j / 2];
+    free(sort);
 }
 
 void    print_stacks(t_swap *swap)
