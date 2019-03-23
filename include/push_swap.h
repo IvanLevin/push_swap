@@ -6,15 +6,16 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:30 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/23 14:22:16 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # define CAP 100000
-# include "libft/libft.h"
-# include "ft_printf/include/ft_printf.h"
+# include "../libft/libft.h"
+# include "../ft_printf/include/ft_printf.h"
+#include "../get_next_line/get_next_line.h"
 # include <unistd.h>
 # include <stdio.h>
 
@@ -44,6 +45,7 @@ int				check_valid(int argc, char **argv);
 int				check_valid_num(int argc, char **argv);
 void			push_swap(int argc, char **argv);
 void			algorithm_sort(t_swap *swap);
+void			initialize_swap(t_swap *swap);
 void			sort_min(t_swap *swap);
 void			sort_insert(t_swap *swap);
 int				swap_pivot(t_swap *swap);

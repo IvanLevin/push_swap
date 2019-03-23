@@ -6,11 +6,11 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:11:23 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/21 11:16:41 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int				check_min_elem(t_swap *swap)
 {
@@ -100,8 +100,6 @@ void			sort_stack_a(t_swap *swap)
 				swap->cap[swap->cap_len] = swap->cap[swap->cap_len] - 2;
 				return ;
 			}
-			if (check_sort(swap) == 0)
-				return ;
 			swap_stack_a(swap);
 			return ;
 		}

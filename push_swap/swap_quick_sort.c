@@ -6,11 +6,11 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:10:53 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/21 11:11:58 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static	int	check_elems_down(t_swap *swap)
 {

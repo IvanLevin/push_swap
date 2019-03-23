@@ -6,11 +6,11 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:15:39 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 18:08:25 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/21 11:14:59 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	new_pivot_a(t_swap *swap)
 {

@@ -6,11 +6,11 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:08:03 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/20 18:17:03 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/21 11:17:13 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int		swap_pivot(t_swap *swap)
 {
@@ -93,5 +93,7 @@ int		swap_quick_sort(t_swap *swap)
 	swap->cap_len = i - 1;
 	sort_min(swap);
 	quick_sort(swap);
+	sort_print(swap);
+	printf("\nSCORE = %d\n", swap->score);
 	return (0);
 }

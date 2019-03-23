@@ -14,13 +14,9 @@
 
 int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	size_t i;
 	size_t check_one;
 	size_t check_two;
 
-	check_one = 0;
-	check_two = 0;
-	i = 0;
 	if (n == 0)
 		return (1);
 	if (!s2 || !s1)

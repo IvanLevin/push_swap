@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static	void	free_struct(t_swap *swap)
 {
@@ -18,7 +18,7 @@ static	void	free_struct(t_swap *swap)
 	free(swap->stack_b);
 }
 
-static	void	initialize_swap(t_swap *swap)
+void			initialize_swap(t_swap *swap)
 {
 	int	i;
 
