@@ -1,62 +1,46 @@
 NAME_P = push_swap.a
 
+NAMEP = push_swap
+
 NAME_C = checker.a
 
-FLAGS = -Wall -Wextra -Werror
+NAMEC = checker
+
+INC_DIR = ./inc/*.h
+
+LIB_DIR = ./lib/ft_printf/libftprintf.a
+
+SRC_DIR = ./src/push_swap/*.c
+
+OBJ_DIR = ./obj
 
 OBJ = *.o
 
-DIR_S = sources/push_swap
+CC = gcc
 
-FT_PRINTF = ft_printf
+CFLAGS = -Wall -Wextra -Werror -c
 
-INCLUDE = include
-
-GNL = get_next_line
-
-SOURCES_C = sources/checker/checker.c sources/push_swap/swap_rules.c \
-			sources/push_swap/swap_rules_2.c \
-			sources/push_swap/swap_rules_3.c ft_printf/libftprintf.a \
-			get_next_line/get_next_line.c
-
-OBJ_C = $(SOURCES_C:.c=.o)
-
-SOURCES_P = sources/push_swap/main.c \
-			sources/push_swap/check_valid.c \
-			sources/push_swap/find_pivot.c \
-			sources/push_swap/push_swap.c \
-			sources/push_swap/sort_algorithm.c \
-			sources/push_swap/sort_print.c \
-			sources/push_swap/swap_func.c \
-			sources/push_swap/swap_quick_sort.c \
-			sources/push_swap/swap_quick_sort_a.c \
-			sources/push_swap/swap_rules.c \
-			sources/push_swap/swap_rules_2.c \
-			sources/push_swap/swap_rules_3.c \
+FT_PRINTF = ./lib/ft_printf
 
 GREEN = \033[31m
+
 RED = \033[31m
+
 END = \033[0m
 
-all: $(NAME_P)
-	
-$(NAME_P):
-	@make -C $(FT_PRINTF)
-	gcc $(FLAGS) -c $(SOURCES_P)
-	gcc $(FLAGS) -o $(NAME_P) $(OBJS)
-	ar rc $(NAME_P) $(OBJ)
+all: $(NAMEP)
 
-%.0: %.c
-	gcc -c $(FLAGS) -I libft/ft_printf -o $@ -c $<
-# $(NAME_C):
-# 	@make -C $(FT_PRINTF)
-# 	gcc $(FLAGS) -c $(SOURCES_C)
-# 	ar rc $(NAME_C) $(OBJ)
+push_swap:
+	@make -C lib/ft_printf
+	$(CC) $(CFLAGS) $(SRC_DIR) -I$(INC_DIR)
+	$(CC) -L. $(LIB_DIR) -I$(INC_DIR) $(OBJ) -o $(NAMEP)
+	@make clean
 
 clean:
 	@rm -f $(OBJ)
 
 fclean: clean
 	@rm -f $(NAME_P)
+	@rm $(NAMEP)
 
 re: fclean all
