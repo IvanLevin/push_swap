@@ -6,14 +6,13 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:30 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/23 14:22:16 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/24 14:16:15 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # define CAP 100000
-# include "../libft/libft.h"
 # include "../ft_printf/include/ft_printf.h"
 #include "../get_next_line/get_next_line.h"
 # include <unistd.h>
