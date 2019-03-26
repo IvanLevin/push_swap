@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:52:04 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/26 18:06:37 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/26 18:38:17 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,30 @@ static	int		mem_allocation_check(t_swap *swap)
 	return (0);
 }
 
+int				create_arr_check(int argc, char **argv, t_swap *swap)
+{
+	char	**tab;
+	int		i;
+
+	i = 0;
+	if (argc == 2)
+	{
+		tab = ft_strsplit(argv[1], ' ');
+		while (tab[i] != NULL)
+			i++;
+		swap->len = i;
+		i--;
+		mem_allocation_check(swap);
+		while (i > 0)
+		{
+			swap->stack_a[i] = ft_atoi(tab[i]);
+			i--;
+		}
+		swap->stack_a[i] = ft_atoi(tab[i]);
+	}
+	return (0);
+}
+
 t_swap			*push_check(int argc, char **argv)
 {
 	t_swap	*swap;
@@ -58,15 +82,23 @@ t_swap			*push_check(int argc, char **argv)
 	int		j;
 
 	swap = (t_swap *)malloc(sizeof(t_swap));
-	swap->len = argc - 1;
-	mem_allocation_check(swap);
+	if (argc == 1)
+		return (0);
+	if (argc == 2)
+		create_arr_check(argc, argv, swap);
+	else
+	{
+		swap->len = argc - 1;
+		mem_allocation_check(swap);
+	}
 	initialize_swap_check(swap);
 	i = 1;
 	j = 0;
-	while (argv[i])
-	{
-		var = ft_atoi(argv[i++]);
-		swap->stack_a[j++] = var;
-	}
+	if (argc > 2)
+		while (argv[i])
+		{
+			var = ft_atoi(argv[i++]);
+			swap->stack_a[j++] = var;
+		}
 	return (swap);
 }
