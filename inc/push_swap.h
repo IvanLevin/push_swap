@@ -23,13 +23,11 @@ typedef struct s_swap
     int         min;
     int         max;
     int         temp;
-    int         len_min;
-    int         len_max;
     int         unsorted;
-    int         way;
     int         sorted;
 }				t_swap;
 
+int 		    mem_allocation(t_swap *swap);
 int				check_valid(int argc, char **argv);
 int				check_valid_num(int argc, char **argv);
 void			push_swap(int argc, char **argv);
@@ -69,6 +67,5 @@ void            put_b(t_swap *swap);
 int             b_del(t_swap *swap);
 void            sort_toa2(t_swap *swap);
 void            find_max_min(t_swap *swap);
-int				get_next_line(const int fd, char **line);
 
 #endif

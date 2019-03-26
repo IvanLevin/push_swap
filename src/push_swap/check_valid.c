@@ -68,21 +68,30 @@ static	int		check_valid_arg(char **argv, int i)
 
 int				check_valid(int argc, char **argv)
 {
-
 	int		i;
-	int 	len;
+	char    **tab;
 
 	i = 1;
-	len = argc;
 
 	if (argc < 1)
 		return (-1);
-	while (argc > 1)
+	if (argc == 2)
 	{
-		if (check_valid_arg(argv, i) == -1)
-			return (-1);
-		i++;
-		argc--;
+		tab = ft_strsplit(argv[1], ' ');
+		while (tab[i] != NULL)
+		{
+			if (check_valid_arg(tab, i) == -1)
+				return (-1);
+			i++;
+		}
 	}
+	else
+		while (argc > 2)
+		{
+			if (check_valid_arg(argv, i) == -1)
+				return (-1);
+			i++;
+			argc--;
+		}
 	return (0);
 }
