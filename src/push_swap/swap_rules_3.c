@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:33:36 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/25 15:05:52 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/26 16:08:58 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	rb(t_swap *sw_b)
 	}
 	sw_b->stack_b[i] = temp;
 	sw_b->score++;
-	ft_printf("rb\n");
+	if (sw_b->checker == 0)
+		ft_printf("rb\n");
 }
 
 void	rra(t_swap *sw_a)
@@ -43,7 +44,8 @@ void	rra(t_swap *sw_a)
 	}
 	sw_a->stack_a[sw_a->len - i] = temp;
 	sw_a->score++;
-	ft_printf("rra\n");
+	if (sw_a->checker == 0)
+		ft_printf("rra\n");
 }
 
 void	rrb(t_swap *sw_b)
@@ -60,5 +62,6 @@ void	rrb(t_swap *sw_b)
 	}
 	sw_b->stack_b[sw_b->len - i] = temp;
 	sw_b->score++;
-	ft_printf("rrb\n");
+	if (sw_b->checker == 0)
+		ft_printf("rrb\n");
 }

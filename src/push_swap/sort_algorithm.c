@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:08:03 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/25 15:05:27 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/26 16:52:24 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,5 @@ int		swap_quick_sort(t_swap *swap)
 	swap->cap_len = i - 1;
 	sort_min(swap);
 	quick_sort(swap);
-	sort_print(swap);
-	printf("\nSCORE = %d\n", swap->score);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:15:22 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/25 15:05:46 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/26 16:09:29 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	sa(t_swap *sw_a)
 	sw_a->stack_a[i + 1] = sw_a->stack_a[i];
 	sw_a->stack_a[i] = temp;
 	sw_a->score++;
-	ft_printf("sa\n");
+	if (sw_a->checker == 0)
+		ft_printf("sa\n");
 }
 
 void	sb(t_swap *sw_b)
@@ -39,7 +40,8 @@ void	sb(t_swap *sw_b)
 	sw_b->stack_b[i + 1] = sw_b->stack_b[i];
 	sw_b->stack_b[i] = temp;
 	sw_b->score++;
-	ft_printf("sb\n");
+	if (sw_b->checker == 0)
+		ft_printf("sb\n");
 }
 
 void	pa(t_swap *swap)
@@ -52,7 +54,8 @@ void	pa(t_swap *swap)
 	swap->top_b++;
 	swap->len_b--;
 	swap->len_a++;
-	ft_printf("pa\n");
+	if (swap->checker == 0)
+		ft_printf("pa\n");
 }
 
 void	pb(t_swap *swap)
@@ -65,7 +68,8 @@ void	pb(t_swap *swap)
 	swap->top_b--;
 	swap->len_b++;
 	swap->len_a--;
-	ft_printf("pb\n");
+	if (swap->checker == 0)
+		ft_printf("pb\n");
 }
 
 void	ra(t_swap *sw_a)
@@ -82,5 +86,6 @@ void	ra(t_swap *sw_a)
 	}
 	sw_a->stack_a[i] = temp;
 	sw_a->score++;
-	ft_printf("ra\n");
+	if (sw_a->checker == 0)
+		ft_printf("ra\n");
 }

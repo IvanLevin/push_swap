@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:30 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/25 15:02:42 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/26 15:45:47 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 # define CAP 100000
 # include "ft_printf.h"
-#include "get_next_line.h"
+# include "get_next_line.h"
 # include <unistd.h>
 # include <stdio.h>
 
@@ -37,6 +37,7 @@ typedef struct	s_swap
 	int			swap_len;
 	int			flag;
 	int			check_len;
+	int 		checker;
 
 }				t_swap;
 
@@ -72,5 +73,8 @@ void			sb(t_swap *sw_b);
 void			ra(t_swap *sw_a);
 void			rb(t_swap *sw_b);
 void			sa(t_swap *sw);
+t_swap			*push_check(int argc, char **argv);
+void			free_struct_check(t_swap *swap);
+
 
 #endif

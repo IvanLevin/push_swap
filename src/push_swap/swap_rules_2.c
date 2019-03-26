@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:33:25 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/25 15:05:49 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/26 16:08:58 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	ss(t_swap *swap)
 	swap->stack_a[i + 1] = swap->stack_a[i];
 	swap->stack_a[i] = temp;
 	swap->score++;
-	ft_printf("ss\n");
+	if (swap->checker == 0)
+		ft_printf("ss\n");
 }
 
 void	rr(t_swap *sw_a, t_swap *sw_b)
@@ -58,7 +59,8 @@ void	rr(t_swap *sw_a, t_swap *sw_b)
 	}
 	sw_a->stack_a[i] = temp;
 	sw_a->score++;
-	ft_printf("rr\n");
+	if (sw_a->checker == 0)
+		ft_printf("rr\n");
 }
 
 void	rrr(t_swap *sw_a, t_swap *sw_b)
@@ -83,6 +85,6 @@ void	rrr(t_swap *sw_a, t_swap *sw_b)
 	}
 	sw_b->stack_b[sw_b->len - i] = temp;
 	sw_a->score++;
-	ft_printf("rrr\n");
+	if (sw_a->checker == 0)
+		ft_printf("rrr\n");
 }
-
