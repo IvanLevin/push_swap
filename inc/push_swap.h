@@ -67,5 +67,7 @@ void            put_b(t_swap *swap);
 int             b_del(t_swap *swap);
 void            sort_toa2(t_swap *swap);
 void            find_max_min(t_swap *swap);
+t_swap			*push_check(int argc, char **argv);
+void			free_struct_check(t_swap *swap);
 
 #endif

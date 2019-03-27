@@ -87,9 +87,6 @@ void	push_swap(int argc, char **argv)
 			return;
 	}
 	initialize_swap(swap);
-	i = 0;
-	while (i < swap->len)
-		printf(BLUE"%d\n", swap->stack_a[i++]);
 	i = 1;
 	j = 0;
 	if (argc > 2)

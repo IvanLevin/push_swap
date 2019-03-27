@@ -6,11 +6,11 @@
 /*   By: breolson <breolson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/22 15:50:18 by breolson          #+#    #+#             */
-/*   Updated: 2019/01/03 17:37:12 by breolson         ###   ########.fr       */
+/*   Updated: 2019/03/27 10:12:14 by breolson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../inc/get_next_line.h"
 
 static	int			checkline(char **stack, char **line)
 {
