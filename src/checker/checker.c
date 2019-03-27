@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:50:47 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/26 18:01:39 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/27 16:38:57 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,25 @@ static	int		rule_checking(t_swap *swap, char *line)
 
 static	int		check_valid_1(int argc, char **argv)
 {
-	if (check_valid(argc, argv) == -1)
+	if (*argv[1] >= '0' && *argv[1] <= '9')
+	{
+		if (check_valid(argc, argv) == -1)
+		{
+			ft_putendl("Error\n");
+			return (-1);
+		}
+		if (check_valid_num(argc, argv) == -1)
+		{
+			ft_putendl("Error\n");
+			return (-1);
+		}
+		return (0);
+	}
+	else
 	{
 		ft_putendl("Error\n");
 		return (-1);
 	}
-	if (check_valid_num(argc, argv) == -1)
-	{
-		ft_putendl("Error\n");
-		return (-1);
-	}
-	return (0);
 }
 
 int				main(int argc, char **argv)

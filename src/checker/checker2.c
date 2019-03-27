@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:52:04 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/26 18:38:17 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/27 16:35:27 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@ void			free_struct_check(t_swap *swap)
 {
 	free(swap->stack_a);
 	free(swap->stack_b);
+	swap->pivot = 0;
+	swap->score = 0;
+	swap->top_a = 0;
+	swap->cap_len = 0;
+	swap->len_a = 0;
+	swap->len_b = 0;
+	swap->top_b = 0;
+	swap->check_a = 0;
+	swap->rec = 0;
+	swap->swap_len = 0;
+	swap->check = 0;
+	swap->checker = 0;
 }
 
 static	void	initialize_swap_check(t_swap *swap)
@@ -23,7 +35,7 @@ static	void	initialize_swap_check(t_swap *swap)
 	int	i;
 
 	i = 0;
-	while (i < 100000)
+	while (i < 10000)
 		swap->cap[i++] = 0;
 	swap->pivot = 0;
 	swap->score = 0;
@@ -42,8 +54,6 @@ static	void	initialize_swap_check(t_swap *swap)
 static	int		mem_allocation_check(t_swap *swap)
 {
 	if (!(swap->stack_a = (int *)malloc(sizeof(int) * swap->len)))
-		return (-1);
-	if (!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
 	if (!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
