@@ -9,7 +9,6 @@
 # include <unistd.h>
 # include <stdio.h>
 
-
 typedef struct s_swap
 {
 	int			*stack_a;
@@ -26,6 +25,7 @@ typedef struct s_swap
     int         unsorted;
     int         sorted;
 	int         checker;
+	int         flag_v;
 }				t_swap;
 
 int 		    mem_allocation(t_swap *swap);

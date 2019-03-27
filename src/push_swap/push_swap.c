@@ -77,8 +77,14 @@ void	push_swap(int argc, char **argv)
 
 	if (!(swap = (t_swap *)malloc(sizeof(t_swap))))
 		return ;
+	swap->flag_v = 0;
 	if (argc == 1)
 		return;
+	if (ft_strcmp(argv[argc - 1], "-v") == 0)
+	{
+		argc -= 1;
+		swap->flag_v = 1;
+	}
 	if (argc == 2)
 		create_arr(argc, argv, swap);
 	else

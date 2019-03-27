@@ -56,6 +56,8 @@ int				check_valid_num(int argc, char **argv)
 	int		j;
 
 	j = 0;
+	if (ft_strcmp(argv[argc - 1], "-v") == 0)
+		argc -= 1;
 	if (!(arr_d = (int *)malloc(sizeof(int) * (argc - 1))))
 		return (-1);
 	check = 0;
@@ -110,6 +112,8 @@ int				check_valid(int argc, char **argv)
 	i = 1;
 	if (argc < 1)
 		return (-1);
+	if (ft_strcmp(argv[argc - 1], "-v") == 0)
+		argc -= 1;
 	if (argc == 2)
 	{
 		if (ft_strequ(argv[1], ""))

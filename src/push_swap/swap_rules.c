@@ -14,7 +14,8 @@ void	sa(t_swap *sw_a)
 	sw_a->score++;
 	if (sw_a->checker == 0)
 		ft_printf("sa\n");
-//    print_stacks(sw_a);
+	if (sw_a->flag_v == 1)
+        print_stacks(sw_a);
 }
 
 void	sb(t_swap *sw_b)
@@ -31,7 +32,8 @@ void	sb(t_swap *sw_b)
 	sw_b->score++;
 	if (sw_b->checker == 0)
 		ft_printf("sb\n");
-//    print_stacks(sw_b);
+	if (sw_b->flag_v == 1)
+        print_stacks(sw_b);
 }
 
 void	ss(t_swap *swap) // ИСПРАВИТЬ!!!
@@ -53,7 +55,8 @@ void	ss(t_swap *swap) // ИСПРАВИТЬ!!!
 	swap->score++;
 	if (swap->checker == 0)
 		ft_printf("ss\n");
-//    print_stacks(swap);
+	if (swap->flag_v == 1)
+		print_stacks(swap);
 }
 
 void	pa(t_swap *swap)
@@ -66,7 +69,8 @@ void	pa(t_swap *swap)
 	swap->top_b++;
 	if (swap->checker == 0)
 		ft_printf("pa\n");
-//    print_stacks(swap);
+	if (swap->flag_v == 1)
+        print_stacks(swap);
 }
 
 void	pb(t_swap *swap)
@@ -79,7 +83,8 @@ void	pb(t_swap *swap)
 	swap->top_b--;
 	if (swap->checker == 0)
 		ft_printf("pb\n");
-//    print_stacks(swap);
+	if (swap->flag_v == 1)
+		print_stacks(swap);
 }
 
 void	ra(t_swap *sw_a)
@@ -98,7 +103,8 @@ void	ra(t_swap *sw_a)
 	sw_a->score++;
 	if (sw_a->checker == 0)
 		ft_printf("ra\n");
-//    print_stacks(sw_a);
+	if (sw_a->flag_v == 1)
+        print_stacks(sw_a);
 }
 
 void	rb(t_swap *sw_b)
@@ -108,7 +114,6 @@ void	rb(t_swap *sw_b)
 
 	i = sw_b->top_b;
 	temp = sw_b->stack_b[i];
-
 	while (sw_b->len - 1 > i)
 	{
 		sw_b->stack_b[i] = sw_b->stack_b[i + 1];
@@ -118,7 +123,8 @@ void	rb(t_swap *sw_b)
 	sw_b->score++;
 	if (sw_b->checker == 0)
 		ft_printf("rb\n");
-//    print_stacks(sw_b);
+	if (sw_b->flag_v == 1)
+        print_stacks(sw_b);
 }
 
 void	rr(t_swap *swap) // ПЕРЕДЕЛАТЬ!!!
@@ -147,7 +153,8 @@ void	rr(t_swap *swap) // ПЕРЕДЕЛАТЬ!!!
 	swap->score++;
 	if (swap->checker == 0)
 		ft_printf("rr\n");
-//    print_stacks(swap);
+	if (swap->flag_v == 1)
+        print_stacks(swap);
 }
 
 void	rra(t_swap *sw_a) // ПЕРЕДЕЛАТЬ!!!
@@ -165,8 +172,9 @@ void	rra(t_swap *sw_a) // ПЕРЕДЕЛАТЬ!!!
 	sw_a->stack_a[sw_a->len - i] = temp;
 	sw_a->score++;
 	if (sw_a->checker == 0)
-	ft_printf("rra\n");
-//    print_stacks(sw_a);
+		ft_printf("rra\n");
+	if (sw_a->flag_v == 1)
+        print_stacks(sw_a);
 }
 
 void	rrb(t_swap *sw_b)
@@ -185,7 +193,8 @@ void	rrb(t_swap *sw_b)
 	sw_b->score++;
 	if (sw_b->checker == 0)
 		ft_printf("rrb\n");
-//    print_stacks(sw_b);
+	if (sw_b->flag_v == 1)
+		print_stacks(sw_b);
 }
 
 void	rrr(t_swap *sw_a, t_swap *sw_b) // ПЕРЕДЕЛАТЬ!!!
@@ -212,5 +221,6 @@ void	rrr(t_swap *sw_a, t_swap *sw_b) // ПЕРЕДЕЛАТЬ!!!
 	sw_a->score++;
 	if (sw_b->checker == 0)
 		ft_printf("rrr\n");
-//    print_stacks(sw_a);
+	if (sw_a->flag_v == 1)
+        print_stacks(sw_a);
 }
