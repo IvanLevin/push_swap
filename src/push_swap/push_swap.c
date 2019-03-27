@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:12 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/26 16:50:01 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/27 12:29:30 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static	int		mem_allocation(t_swap *swap)
 	return (0);
 }
 
-int         create_arr(int argc, char **argv, t_swap *swap)
+int				create_arr(int argc, char **argv, t_swap *swap)
 {
-	char    **tab;
-	int     i;
+	char	**tab;
+	int		i;
 
 	i = 0;
 	if (argc == 2)
@@ -74,24 +74,23 @@ int         create_arr(int argc, char **argv, t_swap *swap)
 	return (0);
 }
 
-void	push_swap(int argc, char **argv)
+void			push_swap(int argc, char **argv)
 {
 	t_swap	*swap;
-	int 	var;
-	int 	i;
-	int 	j;
+	int		var;
+	int		i;
+	int		j;
 
-	if (!(swap = (t_swap *)malloc(sizeof(t_swap))))
-		return ;
+	swap = (t_swap *)malloc(sizeof(t_swap));
 	if (argc == 1)
-		return;
+		return ;
 	if (argc == 2)
 		create_arr(argc, argv, swap);
 	else
 	{
 		swap->len = argc - 1;
 		if (mem_allocation(swap) == -1)
-			return;
+			return ;
 	}
 	initialize_swap(swap);
 	i = 1;

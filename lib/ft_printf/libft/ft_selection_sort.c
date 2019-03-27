@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 18:03:00 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/25 11:09:30 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/26 18:56:59 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,3 @@ int			*ft_selection_sort(int *arr, int size)
 	}
 	return (new_arr);
 }
-

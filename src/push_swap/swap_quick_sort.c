@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:10:53 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/26 18:29:54 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/27 12:32:16 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void		quick_sort(t_swap *swap)
 {
 	while (1)
 	{
-		sort_print(swap);
 		swap->check = 0;
 		pivot_b(swap);
 		if (swap->cap_len < 0)

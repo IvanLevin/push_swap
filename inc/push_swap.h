@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:30 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/26 15:45:47 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/26 18:56:59 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct	s_swap
 	int			swap_len;
 	int			flag;
 	int			check_len;
-	int 		checker;
+	int			checker;
 
 }				t_swap;
 
@@ -75,6 +75,5 @@ void			rb(t_swap *sw_b);
 void			sa(t_swap *sw);
 t_swap			*push_check(int argc, char **argv);
 void			free_struct_check(t_swap *swap);
-
 
 #endif

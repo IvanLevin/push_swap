@@ -25,9 +25,9 @@ CFLAGS = -Wall -Wextra -Werror -c
 
 FT_PRINTF = ./lib/ft_printf
 
-GREEN = \033[31m
+LOG_GREEN = \033[32m
 
-RED = \033[31m
+LOG_RED	= \033[1;31m
 
 END = \033[0m
 
@@ -35,13 +35,15 @@ all: $(NAMEP) $(NAMEC)
 
 push_swap:
 	@make -C lib/ft_printf
-	$(CC) $(CFLAGS) $(SRC_DIR) -I$(INC_DIR)
-	$(CC) $(OBJ) -L. $(LIB_DIR) -I$(INC_DIR) -o $(NAMEP)
+	@$(CC) $(CFLAGS) $(SRC_DIR) -I$(INC_DIR)
+	@$(CC) $(OBJ) -L. $(LIB_DIR) -I$(INC_DIR) -o $(NAMEP)
+	@echo "$(LOG_GREEN)PUSH_SWAP CREATED SUCCESSFULLY$(END)"
 	@make clean
 
 checker:
-	$(CC) $(CFLAGS) $(SRC_CHECK) -I$(INC_DIR)
-	$(CC) $(OBJ) -L. $(LIB_DIR) -I$(INC_DIR) -o $(NAMEC)
+	@$(CC) $(CFLAGS) $(SRC_CHECK) -I$(INC_DIR)
+	@$(CC) $(OBJ) -L. $(LIB_DIR) -I$(INC_DIR) -o $(NAMEC)
+	@echo "$(LOG_RED)CHECKER CREATED SUCCESSFULLY$(END)"
 	@make clean
 
 clean:

@@ -6,13 +6,13 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 16:56:55 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/26 18:04:45 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/26 18:56:59 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-int		ft_atoi2(const char *str, int *j)
+int				ft_atoi2(const char *str, int *j)
 {
 	long long int			nb;
 	int						i;
@@ -61,12 +61,12 @@ int				check_valid_num(int argc, char **argv)
 {
 	int		*arr_d;
 	int		var;
-	int 	check;
+	int		check;
 	int		i;
-	int 	j;
+	int		j;
 
 	j = 0;
-	if(!(arr_d = (int *)malloc(sizeof(int) * (argc - 1))))
+	if (!(arr_d = (int *)malloc(sizeof(int) * (argc - 1))))
 		return (-1);
 	check = 0;
 	i = 1;
@@ -77,7 +77,7 @@ int				check_valid_num(int argc, char **argv)
 		{
 			if (j == 1)
 				return (-1);
-			if(check_same(var, arr_d, check) == -1)
+			if (check_same(var, arr_d, check) == -1)
 			{
 				free(arr_d);
 				return (-1);
@@ -98,7 +98,7 @@ int				check_valid_num(int argc, char **argv)
 
 static	int		check_valid_arg(char **argv, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	if (argv[i][j] == '+' || argv[i][j] == '-')
@@ -115,10 +115,9 @@ static	int		check_valid_arg(char **argv, int i)
 int				check_valid(int argc, char **argv)
 {
 	int		i;
-	char    **tab;
+	char 	**tab;
 
 	i = 1;
-//
 	if (argc < 1)
 		return (-1);
 	if (argc == 2)
