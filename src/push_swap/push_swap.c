@@ -30,6 +30,7 @@ static void	initialize_swap(t_swap *swap)
 	swap->temp = 2;
     swap->unsorted = 0;     // направление сортировки (вверх == -1, вниз == 1)
 	swap->sorted = 0;
+	swap->checker = 0;
 }
 
 int 		mem_allocation(t_swap *swap)
@@ -54,7 +55,7 @@ int         create_arr(int argc, char **argv, t_swap *swap)
 		tab = ft_strsplit(argv[1], ' ');
 		while (tab[i] != NULL)
 			i++;
-		swap->len = i;
+		swap->len = i -1;
 		i--;
 		mem_allocation(swap);
 		while (i > 0)

@@ -8,7 +8,16 @@ LIB_DIR = ./lib/ft_printf/libftprintf.a
 
 SRC_DIR = ./src/push_swap/*.c
 
-SRC_CHECK = ./src/push_swap/check_valid.c ./src/checker/*.c ./src/push_swap/swap_rules.c ./lib/get_next_line/get_next_line.c 
+SRC_CHECK = ./src/push_swap/check_valid.c \
+			./src/checker/*.c \
+			./src/push_swap/swap_rules.c \
+			./lib/get_next_line/get_next_line.c \
+			./src/push_swap/helpers2.c \
+			./src/push_swap/check_valid.c \
+			./src/push_swap/helpers1.c \
+			./src/push_swap/helpers3.c \
+			./src/push_swap/sort_algorithm.c \
+			./src/push_swap/swap_quick_sort.c
 
 OBJ_DIR = ./obj
 

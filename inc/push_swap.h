@@ -25,6 +25,7 @@ typedef struct s_swap
     int         temp;
     int         unsorted;
     int         sorted;
+	int         checker;
 }				t_swap;
 
 int 		    mem_allocation(t_swap *swap);

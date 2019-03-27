@@ -17,7 +17,7 @@ static	int		check_sort_c(t_swap *swap)
 	int	i;
 
 	i = swap->top_a;
-	if (swap->top_b != 0)
+	if (swap->top_b < swap->len)
 		return (1);
 	while (i < swap->len - 1)
 	{
@@ -68,17 +68,25 @@ static	int		rule_checking(t_swap *swap, char *line)
 
 static	int		check_valid_1(int argc, char **argv)
 {
-	if (check_valid(argc, argv) == -1)
+	if (*argv[1] >= '0' && *argv[1] <= '9')
+	{
+		if (check_valid(argc, argv) == -1)
+		{
+			ft_putendl("Error\n");
+			return (-1);
+		}
+		if (check_valid_num(argc, argv) == -1)
+		{
+			ft_putendl("Error\n");
+			return (-1);
+		}
+		return (0);
+	}
+	else
 	{
 		ft_putendl("Error\n");
 		return (-1);
 	}
-	if (check_valid_num(argc, argv) == -1)
-	{
-		ft_putendl("Error\n");
-		return (-1);
-	}
-	return (0);
 }
 
 int				main(int argc, char **argv)
