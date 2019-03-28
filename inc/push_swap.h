@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:30 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/26 18:56:59 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/28 15:42:27 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_swap
 	int			flag;
 	int			check_len;
 	int			checker;
+	int			flag_v;
 
 }				t_swap;
 
@@ -63,6 +64,7 @@ void			swap_stack_a(t_swap *swap);
 void			sort_stack_a(t_swap *swap);
 void			put_stack_b(t_swap *swap);
 void			rrr(t_swap *sw_a, t_swap *sw_b);
+int				check_vaild_2(int argc, char **argv);
 void			ss(t_swap *swap);
 void			pb(t_swap *swap);
 void			pa(t_swap *swap);
@@ -73,7 +75,7 @@ void			sb(t_swap *sw_b);
 void			ra(t_swap *sw_a);
 void			rb(t_swap *sw_b);
 void			sa(t_swap *sw);
-t_swap			*push_check(int argc, char **argv);
+void			push_check(int argc, char **argv, t_swap *swap);
 void			free_struct_check(t_swap *swap);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:50:47 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/27 16:38:57 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/28 15:38:21 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ int				main(int argc, char **argv)
 		return (-1);
 	if (check_valid_1(argc, argv) == -1)
 		return (-1);
-	swap = push_check(argc, argv);
+	swap = (t_swap *)malloc(sizeof(t_swap));
+	push_check(argc, argv, swap);
 	while (get_next_line(0, &line) > 0)
 	{
 		if (ft_strequ(line, ""))
@@ -112,5 +113,6 @@ int				main(int argc, char **argv)
 		free(line);
 	}
 	print_ok(swap);
+	free(swap);
 	return (0);
 }

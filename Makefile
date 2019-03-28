@@ -9,7 +9,9 @@ LIB_DIR = ./lib/ft_printf/libftprintf.a
 SRC_DIR = ./src/push_swap/*.c
 
 SRC_CHECK = ./src/push_swap/check_valid.c \
+            ./src/push_swap/check_valid_2.c \
 			./src/checker/*.c \
+			./src/push_swap/sort_print.c \
 			./src/push_swap/swap_rules.c \
 			./src/push_swap/swap_rules_2.c \
 			./src/push_swap/swap_rules_3.c \
@@ -47,9 +49,11 @@ checker:
 	@make clean
 
 clean:
+	@make clean -C $(FT_PRINTF)
 	@rm -f $(OBJ)
 
 fclean: clean
+	@make fclean -C $(FT_PRINTF)
 	@rm $(NAMEP)
 	@rm $(NAMEC)
 

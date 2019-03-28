@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:08:03 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/26 18:24:52 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/28 15:12:52 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		swap_pivot(t_swap *swap)
 {
 	int		*sort;
 	int		i;
+	int		ret;
 
 	sort = (int *)malloc(sizeof(int) * swap->len);
 	i = 0;
@@ -26,7 +27,9 @@ int		swap_pivot(t_swap *swap)
 	}
 	sort = ft_selection_sort(sort, swap->len);
 	swap->pivot = (0 + swap->len) / 2;
-	return (sort[swap->pivot]);
+	ret = sort[swap->pivot];
+	free(sort);
+	return (ret);
 }
 
 int		check_sort(t_swap *swap)

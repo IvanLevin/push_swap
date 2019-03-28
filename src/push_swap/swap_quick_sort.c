@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:10:53 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/27 12:32:16 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/27 19:06:59 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static	int	check_elems_down(t_swap *swap)
 	i = swap->top_b;
 	while (j < swap->cap[swap->cap_len] - swap->cap[swap->cap_len - 1])
 	{
-		if (swap->stack_b[i] >= swap->pivot)
+		if (i < swap->len && swap->stack_b[i] >= swap->pivot)
 			return (1);
 		i++;
 		j++;

@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:52:04 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/27 16:35:27 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/27 17:33:29 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static	void	initialize_swap_check(t_swap *swap)
 	swap->rec = 0;
 	swap->swap_len = 0;
 	swap->check = 0;
+	swap->flag = 0;
 	swap->checker = 1;
 }
 
@@ -84,16 +85,14 @@ int				create_arr_check(int argc, char **argv, t_swap *swap)
 	return (0);
 }
 
-t_swap			*push_check(int argc, char **argv)
+void			push_check(int argc, char **argv, t_swap *swap)
 {
-	t_swap	*swap;
 	int		var;
 	int		i;
 	int		j;
 
-	swap = (t_swap *)malloc(sizeof(t_swap));
 	if (argc == 1)
-		return (0);
+		return ;
 	if (argc == 2)
 		create_arr_check(argc, argv, swap);
 	else
@@ -110,5 +109,4 @@ t_swap			*push_check(int argc, char **argv)
 			var = ft_atoi(argv[i++]);
 			swap->stack_a[j++] = var;
 		}
-	return (swap);
 }

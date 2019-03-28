@@ -35,6 +35,8 @@ void	ss(t_swap *swap)
 	swap->score++;
 	if (swap->checker == 0)
 		ft_printf("ss\n");
+	if (swap->flag_v == 1)
+		sort_print(swap);
 }
 
 void	rr(t_swap *sw_a, t_swap *sw_b)
@@ -61,6 +63,8 @@ void	rr(t_swap *sw_a, t_swap *sw_b)
 	sw_a->score++;
 	if (sw_a->checker == 0)
 		ft_printf("rr\n");
+	if (sw_a->flag_v == 1)
+		sort_print(sw_a);
 }
 
 void	rrr(t_swap *sw_a, t_swap *sw_b)
@@ -87,4 +91,6 @@ void	rrr(t_swap *sw_a, t_swap *sw_b)
 	sw_a->score++;
 	if (sw_a->checker == 0)
 		ft_printf("rrr\n");
+	if (sw_a->flag_v == 1)
+		sort_print(sw_a);
 }

@@ -26,6 +26,10 @@ void	sa(t_swap *sw_a)
 	sw_a->score++;
 	if (sw_a->checker == 0)
 		ft_printf("sa\n");
+	if (sw_a->flag_v == 1)
+		sort_print(sw_a);
+	if (sw_a->flag_v == 1)
+		sort_print(sw_a);
 }
 
 void	sb(t_swap *sw_b)
@@ -42,6 +46,10 @@ void	sb(t_swap *sw_b)
 	sw_b->score++;
 	if (sw_b->checker == 0)
 		ft_printf("sb\n");
+	if (sw_b->flag_v == 1)
+		sort_print(sw_b);
+	if (sw_b->flag_v == 1)
+		sort_print(sw_b);
 }
 
 void	pa(t_swap *swap)
@@ -56,6 +64,8 @@ void	pa(t_swap *swap)
 	swap->len_a++;
 	if (swap->checker == 0)
 		ft_printf("pa\n");
+	if (swap->flag_v == 1)
+		sort_print(swap);
 }
 
 void	pb(t_swap *swap)
@@ -70,6 +80,8 @@ void	pb(t_swap *swap)
 	swap->len_a--;
 	if (swap->checker == 0)
 		ft_printf("pb\n");
+	if (swap->flag_v == 1)
+		sort_print(swap);
 }
 
 void	ra(t_swap *sw_a)
@@ -88,4 +100,6 @@ void	ra(t_swap *sw_a)
 	sw_a->score++;
 	if (sw_a->checker == 0)
 		ft_printf("ra\n");
+	if (sw_a->flag_v == 1)
+		sort_print(sw_a);
 }

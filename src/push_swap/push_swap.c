@@ -6,7 +6,7 @@
 /*   By: gkshleri <gkshleri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:12 by gkshleri          #+#    #+#             */
-/*   Updated: 2019/03/27 12:29:30 by gkshleri         ###   ########.fr       */
+/*   Updated: 2019/03/28 15:27:26 by gkshleri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,9 @@ static	void	free_struct(t_swap *swap)
 	free(swap->stack_b);
 }
 
-void			initialize_swap(t_swap *swap)
-{
-	int	i;
-
-	i = 0;
-	while (i < 100000)
-		swap->cap[i++] = 0;
-	swap->pivot = 0;
-	swap->score = 0;
-	swap->top_a = 0;
-	swap->cap_len = 0;
-	swap->len_a = swap->len;
-	swap->len_b = 0;
-	swap->top_b = swap->len;
-	swap->check_a = 0;
-	swap->rec = 0;
-	swap->swap_len = 0;
-	swap->check = 0;
-	swap->checker = 0;
-}
-
 static	int		mem_allocation(t_swap *swap)
 {
 	if (!(swap->stack_a = (int *)malloc(sizeof(int) * swap->len)))
-		return (-1);
-	if (!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
 	if (!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
@@ -74,16 +51,42 @@ int				create_arr(int argc, char **argv, t_swap *swap)
 	return (0);
 }
 
+void			push_swap_2(int ac, char **ar, t_swap *swap, int var)
+{
+	int		i;
+	int		j;
+
+	i = 1;
+	j = 0;
+	initialize_swap(swap);
+	if (ac > 2)
+	{
+		while (ar[i])
+		{
+			var = ft_atoi(ar[i++]);
+			swap->stack_a[j++] = var;
+		}
+	}
+	algorithm_sort(swap);
+	free_struct(swap);
+	free(swap);
+}
+
 void			push_swap(int argc, char **argv)
 {
 	t_swap	*swap;
 	int		var;
-	int		i;
-	int		j;
 
+	var = 0;
 	swap = (t_swap *)malloc(sizeof(t_swap));
 	if (argc == 1)
 		return ;
+	swap->flag_v = 0;
+	if (ft_strcmp(argv[argc - 1], "-v") == 0)
+	{
+		swap->flag_v = 1;
+		argc--;
+	}
 	if (argc == 2)
 		create_arr(argc, argv, swap);
 	else
@@ -92,18 +95,5 @@ void			push_swap(int argc, char **argv)
 		if (mem_allocation(swap) == -1)
 			return ;
 	}
-	initialize_swap(swap);
-	i = 1;
-	j = 0;
-	if (argc > 2)
-	{
-		while (argv[i])
-		{
-			var = ft_atoi(argv[i++]);
-			swap->stack_a[j++] = var;
-		}
-	}
-	algorithm_sort(swap);
-	free_struct(swap);
-	free(swap);
+	push_swap_2(argc, argv, swap, var);
 }
