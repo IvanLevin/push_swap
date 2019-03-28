@@ -11,6 +11,8 @@
 
 typedef struct s_swap
 {
+	char        **cmds;
+	int         temp_cmd;
 	int			*stack_a;
 	int 		*stack_b;
     int         *uns_mas;

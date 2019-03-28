@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_algorithm.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: breolson <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/28 14:57:01 by breolson          #+#    #+#             */
+/*   Updated: 2019/03/28 14:57:03 by breolson         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/push_swap.h"
 
-int 	swap_pivot(t_swap *swap)
+int			swap_pivot(t_swap *swap)
 {
 	int		*sort;
-	int 	i;
-	int     ret;
+	int		i;
+	int		ret;
 
 	sort = (int *)malloc(sizeof(int) * swap->len);
 	i = 0;
@@ -20,7 +32,7 @@ int 	swap_pivot(t_swap *swap)
 	return (ret);
 }
 
-int		check_sort(t_swap *swap)
+int			check_sort(t_swap *swap)
 {
 	int i;
 
@@ -34,12 +46,11 @@ int		check_sort(t_swap *swap)
 	return (0);
 }
 
-void	sort_insert(t_swap *swap)
+void		sort_insert(t_swap *swap)
 {
 	int	i;
 
 	i = 0;
-
 	while (check_sort(swap) == 1)
 	{
 		if (swap->stack_a[0] < swap->stack_a[1] && swap->stack_a[0] < \
@@ -49,7 +60,7 @@ void	sort_insert(t_swap *swap)
 			sa(swap);
 		else if (swap->stack_a[2] < swap->stack_a[3] || (swap->stack_a[0] < \
 		swap->stack_a[1] && swap->stack_a[1] < swap->stack_a[2] && \
-        swap->stack_a[0] > swap->stack_a[3]))
+		swap->stack_a[0] > swap->stack_a[3]))
 			rra(swap);
 		else if (swap->stack_a[0] > swap->stack_a[3] || \
 		swap->stack_a[2] > swap->stack_a[3])
@@ -57,43 +68,48 @@ void	sort_insert(t_swap *swap)
 	}
 }
 
-void	sort_min(t_swap *swap)
+void		sort_min(t_swap *swap)
 {
-    if (swap->len - swap->top_a == 2)
-    {
+	if (swap->len - swap->top_a == 2)
+	{
 		if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
 			sa(swap);
 	}
-    else
-    {
-            if (swap->len == 2 || (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1] && \
-        swap->stack_a[swap->top_a] < swap->stack_a[swap->len - 1]))
-                sa(swap);
-            else if (swap->stack_a[swap->top_a] < swap->stack_a[swap->top_a + 1] && \
-        swap->stack_a[swap->top_a] > swap->stack_a[swap->len - 1])
-                rra(swap);
-            else if (swap->stack_a[swap->top_a] < swap->stack_a[swap->top_a + 1] && \
-        swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->len - 1]) {
-                rra(swap);
-                sa(swap);
-            } else if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1] && \
-        swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->len - 1]) {
-                ra(swap);
-                sa(swap);
-            } else if (swap->stack_a[swap->top_a] > swap->stack_a[swap->len - 1] && \
-        swap->stack_a[swap->len - 1] > swap->stack_a[swap->top_a + 1])
-                ra(swap);
-    }
+	else
+	{
+		if (swap->len == 2 || \
+			(swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1] \
+				&& swap->stack_a[swap->top_a] < swap->stack_a[swap->len - 1]))
+			sa(swap);
+		else if (swap->stack_a[swap->top_a] < swap->stack_a[swap->top_a + 1] \
+		&& swap->stack_a[swap->top_a] > swap->stack_a[swap->len - 1])
+			rra(swap);
+		else if (swap->stack_a[swap->top_a] < swap->stack_a[swap->top_a + 1] \
+		&& swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->len - 1])
+		{
+			rra(swap);
+			sa(swap);
+		}
+		else if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1] && \
+			swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->len - 1])
+		{
+			ra(swap);
+			sa(swap);
+		}
+		else if (swap->stack_a[swap->top_a] > swap->stack_a[swap->len - 1] && \
+		swap->stack_a[swap->len - 1] > swap->stack_a[swap->top_a + 1])
+			ra(swap);
+	}
 	swap->sorted = swap->len - swap->top_a;
 }
 
-void 			algorithm_sort(t_swap *swap)
+void		algorithm_sort(t_swap *swap)
 {
-	if (!check_sort(swap)) // Проверка, если все пришло отсортированное
-		return;
-	if (swap->len == 1) // Проверка на 1 значение
-		return;
-	else if (swap->len < 4) // Простая сортировка 2 или 3 значений
+	if (!check_sort(swap))
+		return ;
+	if (swap->len == 1)
+		return ;
+	else if (swap->len < 4)
 		sort_min(swap);
 	else if (swap->len == 4)
 		sort_insert(swap);

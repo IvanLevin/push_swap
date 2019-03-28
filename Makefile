@@ -11,6 +11,8 @@ SRC_DIR = ./src/push_swap/*.c
 SRC_CHECK = ./src/push_swap/check_valid.c \
 			./src/checker/*.c \
 			./src/push_swap/swap_rules.c \
+			./src/push_swap/swap_rules2.c \
+			./src/push_swap/swap_rules3.c \
 			./lib/get_next_line/get_next_line.c \
 			./src/push_swap/helpers2.c \
 			./src/push_swap/check_valid.c \
