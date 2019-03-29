@@ -14,6 +14,16 @@
 
 int		main(int argc, char **argv)
 {
+	if (argv[1][0] >= 33 && argv[1][0] <= 47)
+	{
+		ft_putendl("Error\n");
+		return (-1);
+	}
+	if (argv[1][0] >= 58 && argv[1][0] <= 126)
+	{
+		ft_putendl("Error\n");
+		return (-1);
+	}
 	if (check_valid(argc, argv) == -1)
 	{
 		ft_putendl("Error\n");
