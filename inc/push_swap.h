@@ -27,6 +27,7 @@ typedef struct s_swap
     int         unsorted;
     int         sorted;
 	int         checker;
+	int         flag;
 	int         flag_v;
 }				t_swap;
 
@@ -60,8 +61,6 @@ int             split_stacks_toa2(t_swap *swap);
 int          	num_of_covers(t_swap *swap);
 void            new_pivot_b(t_swap *swap);
 void            new_pivot_a(t_swap *swap);
-int             check_splitted_b(t_swap *swap);
-void            sort_splitted_toa(t_swap *swap);
 int             check_sorted(t_swap *swap);
 void            sort_a(t_swap *swap);
 void            split_stack_b(t_swap *swap);
@@ -72,5 +71,6 @@ void            sort_toa2(t_swap *swap);
 void            find_max_min(t_swap *swap);
 t_swap			*push_check(int argc, char **argv);
 void			free_struct_check(t_swap *swap);
+void			sort_toa3(t_swap *swap);
 
 #endif

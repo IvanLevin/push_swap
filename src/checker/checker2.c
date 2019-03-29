@@ -12,23 +12,22 @@
 
 #include "../../inc/push_swap.h"
 
-void        free_struct_check(t_swap *swap)
+void			free_struct_check(t_swap *swap)
 {
 	free(swap->stack_a);
 	free(swap->stack_b);
-//	free(swap->uns_mas);
 }
 
-static void	initialize_swap_check(t_swap *swap)
+static	void	initialize_swap_check(t_swap *swap)
 {
 	swap->pivot = 0;
 	swap->score = 0;
 	swap->top_a = 0;
 	swap->top_b = swap->len;
-	swap->max = 0;          // минимальное число для сортировки
-	swap->min = 0;          // максимальное число для сортировки// минимальный элемент в стеке А, который не трогаем
+	swap->max = 0;
+	swap->min = 0;
 	swap->temp = 2;
-	swap->unsorted = 0;     // направление сортировки (вверх == -1, вниз == 1)
+	swap->unsorted = 0;
 	swap->sorted = 0;
 	swap->checker = 1;
 }

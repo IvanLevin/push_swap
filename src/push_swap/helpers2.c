@@ -12,40 +12,9 @@
 
 #include "../../inc/push_swap.h"
 
-void		sort_a(t_swap *swap)
+void		sort_a3(t_swap *swap, int i)
 {
-	int i;
-
-	i = swap->top_a;
-	if (swap->len - swap->top_a - swap->sorted == 2)
-	{
-		if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
-			sa(swap);
-	}
-	else if (swap->stack_a[i] > swap->stack_a[i + 1] && \
-		swap->stack_a[i] < swap->stack_a[i + 2])
-		sa(swap);
-	else if (swap->stack_a[i] > swap->stack_a[i + 1] && \
-		swap->stack_a[i] > swap->stack_a[i + 2])
-	{
-		if (swap->stack_a[i + 1] > swap->stack_a[i + 2])
-		{
-			sa(swap);
-			ra(swap);
-			sa(swap);
-			rra(swap);
-			sa(swap);
-		}
-		else
-		{
-			pb(swap);
-			ra(swap);
-			pa(swap);
-			sa(swap);
-			rra(swap);
-		}
-	}
-	else if (swap->stack_a[i] < swap->stack_a[i + 1] && \
+	if (swap->stack_a[i] < swap->stack_a[i + 1] && \
 		swap->stack_a[i] > swap->stack_a[i + 2])
 	{
 		if (swap->stack_a[i + 1] > swap->stack_a[i + 2])
@@ -67,6 +36,49 @@ void		sort_a(t_swap *swap)
 		}
 	}
 	swap->sorted = swap->len - swap->top_a;
+}
+
+void		sort_a2(t_swap *swap, int i)
+{
+	if (swap->stack_a[i] > swap->stack_a[i + 1] && \
+		swap->stack_a[i] > swap->stack_a[i + 2])
+	{
+		if (swap->stack_a[i + 1] > swap->stack_a[i + 2])
+		{
+			sa(swap);
+			ra(swap);
+			sa(swap);
+			rra(swap);
+			sa(swap);
+		}
+		else
+		{
+			pb(swap);
+			ra(swap);
+			pa(swap);
+			sa(swap);
+			rra(swap);
+		}
+	}
+	else
+		sort_a3(swap, i);
+}
+
+void		sort_a(t_swap *swap)
+{
+	int i;
+
+	i = swap->top_a;
+	if (swap->len - swap->top_a - swap->sorted == 2)
+	{
+		if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
+			sa(swap);
+	}
+	else if (swap->stack_a[i] > swap->stack_a[i + 1] && \
+		swap->stack_a[i] < swap->stack_a[i + 2])
+		sa(swap);
+	else
+		sort_a2(swap, i);
 }
 
 int			check_sorted(t_swap *swap)

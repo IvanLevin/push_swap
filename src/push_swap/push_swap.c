@@ -73,12 +73,31 @@ int				create_arr(int argc, char **argv, t_swap *swap)
 	return (0);
 }
 
+void			push_swap2(int argc, char **argv, t_swap *swap)
+{
+	int			i;
+	int			j;
+	int			var;
+
+	initialize_swap(swap);
+	i = 1;
+	j = 0;
+	if (argc > 2)
+	{
+		while (argv[i])
+		{
+			var = ft_atoi(argv[i++]);
+			swap->stack_a[j++] = var;
+		}
+	}
+	algorithm_sort(swap);
+	free_struct(swap);
+	free(swap);
+}
+
 void			push_swap(int argc, char **argv)
 {
 	t_swap		*swap;
-	int			var;
-	int			i;
-	int			j;
 
 	if (!(swap = (t_swap *)malloc(sizeof(t_swap))))
 		return ;
@@ -98,19 +117,5 @@ void			push_swap(int argc, char **argv)
 		if (mem_allocation(swap) == -1)
 			return ;
 	}
-	initialize_swap(swap);
-	i = 1;
-	j = 0;
-	if (argc > 2)
-	{
-		while (argv[i])
-		{
-			var = ft_atoi(argv[i++]);
-			swap->stack_a[j++] = var;
-		}
-	}
-	algorithm_sort(swap);
-	ft_printf("---------------------------\nSCORE = %d", swap->score);
-	free_struct(swap);
-	free(swap);
+	push_swap2(argc, argv, swap);
 }

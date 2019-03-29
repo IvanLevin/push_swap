@@ -9,6 +9,7 @@ LIB_DIR = ./lib/ft_printf/libftprintf.a
 SRC_DIR = ./src/push_swap/*.c
 
 SRC_CHECK = ./src/push_swap/check_valid.c \
+			./src/push_swap/check_valid2.c \
 			./src/checker/*.c \
 			./src/push_swap/swap_rules.c \
 			./src/push_swap/swap_rules2.c \
@@ -18,6 +19,8 @@ SRC_CHECK = ./src/push_swap/check_valid.c \
 			./src/push_swap/check_valid.c \
 			./src/push_swap/helpers1.c \
 			./src/push_swap/helpers3.c \
+			./src/push_swap/helpers4.c \
+			./src/push_swap/helpers5.c \
 			./src/push_swap/sort_algorithm.c \
 			./src/push_swap/swap_quick_sort.c
 
