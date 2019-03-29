@@ -21,6 +21,7 @@ SRC_CHECK = ./src/push_swap/check_valid.c \
 			./src/push_swap/helpers3.c \
 			./src/push_swap/helpers4.c \
 			./src/push_swap/helpers5.c \
+			./src/push_swap/helpers6.c \
 			./src/push_swap/sort_algorithm.c \
 			./src/push_swap/swap_quick_sort.c
 

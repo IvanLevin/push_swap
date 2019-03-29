@@ -56,7 +56,7 @@ int             check_splitted(t_swap *swap);
 void            print_stacks(t_swap *swap);
 void            new_pivot(t_swap *swap);
 int             split_stacks_tob(t_swap *swap);
-int             split_stacks_toa(t_swap *swap);
+void            split_stacks_toa(t_swap *swap);
 int             split_stacks_toa2(t_swap *swap);
 int          	num_of_covers(t_swap *swap);
 void            new_pivot_b(t_swap *swap);
@@ -72,5 +72,8 @@ void            find_max_min(t_swap *swap);
 t_swap			*push_check(int argc, char **argv);
 void			free_struct_check(t_swap *swap);
 void			sort_toa3(t_swap *swap);
+int				check_elems_down(t_swap *swap, int i);
+void			split_stacks_toa_add(t_swap *swap);
+void			free_struct(t_swap *swap);
 
 #endif

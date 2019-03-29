@@ -68,11 +68,8 @@ void		rr(t_swap *swap)
 		swap->stack_a[i] = swap->stack_a[i + 1];
 		i++;
 	}
-	while (swap->len - 1 > j)
-	{
+	while (swap->len - 1 > j++)
 		swap->stack_b[j] = swap->stack_b[j + 1];
-		j++;
-	}
 	swap->stack_a[i] = temp1;
 	swap->stack_b[j] = temp2;
 	swap->score++;

@@ -12,13 +12,6 @@
 
 #include "../../inc/push_swap.h"
 
-static	void	free_struct(t_swap *swap)
-{
-	free(swap->stack_a);
-	free(swap->stack_b);
-	free(swap->uns_mas);
-}
-
 static	void	initialize_swap(t_swap *swap)
 {
 	int i;

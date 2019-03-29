@@ -12,7 +12,48 @@
 
 #include "../../inc/push_swap.h"
 
-void	find_max_min(t_swap *swap)
+int			swap_pivot(t_swap *swap)
+{
+	int		*sort;
+	int		i;
+	int		ret;
+
+	sort = (int *)malloc(sizeof(int) * swap->len);
+	i = 0;
+	while (i < swap->len)
+	{
+		sort[i] = swap->stack_a[i];
+		i++;
+	}
+	sort = ft_selection_sort(sort, swap->len);
+	swap->pivot = (0 + swap->len) / 2;
+	ret = sort[swap->pivot];
+	free(sort);
+	return (ret);
+}
+
+int			check_sort(t_swap *swap)
+{
+	int i;
+
+	i = 0;
+	while (i < swap->len - 1)
+	{
+		if (swap->stack_a[i] > swap->stack_a[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void		free_struct(t_swap *swap)
+{
+	free(swap->stack_a);
+	free(swap->stack_b);
+	free(swap->uns_mas);
+}
+
+void		find_max_min(t_swap *swap)
 {
 	int i;
 
@@ -29,7 +70,7 @@ void	find_max_min(t_swap *swap)
 	}
 }
 
-int		swap_quick_sort(t_swap *swap)
+int			swap_quick_sort(t_swap *swap)
 {
 	while (swap->top_a <= swap->len - 3)
 	{

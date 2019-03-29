@@ -12,40 +12,6 @@
 
 #include "../../inc/push_swap.h"
 
-int			swap_pivot(t_swap *swap)
-{
-	int		*sort;
-	int		i;
-	int		ret;
-
-	sort = (int *)malloc(sizeof(int) * swap->len);
-	i = 0;
-	while (i < swap->len)
-	{
-		sort[i] = swap->stack_a[i];
-		i++;
-	}
-	sort = ft_selection_sort(sort, swap->len);
-	swap->pivot = (0 + swap->len) / 2;
-	ret = sort[swap->pivot];
-	free(sort);
-	return (ret);
-}
-
-int			check_sort(t_swap *swap)
-{
-	int i;
-
-	i = 0;
-	while (i < swap->len - 1)
-	{
-		if (swap->stack_a[i] > swap->stack_a[i + 1])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 void		sort_insert(t_swap *swap)
 {
 	int	i;
@@ -68,6 +34,18 @@ void		sort_insert(t_swap *swap)
 	}
 }
 
+void		sort_min3(t_swap *swap)
+{
+	rra(swap);
+	sa(swap);
+}
+
+void		sort_min2(t_swap *swap)
+{
+	ra(swap);
+	sa(swap);
+}
+
 void		sort_min(t_swap *swap)
 {
 	if (swap->len - swap->top_a == 2)
@@ -75,31 +53,22 @@ void		sort_min(t_swap *swap)
 		if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1])
 			sa(swap);
 	}
-	else
-	{
-		if (swap->len == 2 || \
-			(swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1] \
-				&& swap->stack_a[swap->top_a] < swap->stack_a[swap->len - 1]))
-			sa(swap);
-		else if (swap->stack_a[swap->top_a] < swap->stack_a[swap->top_a + 1] \
+	else if (swap->len == 2 || \
+		(swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1] \
+			&& swap->stack_a[swap->top_a] < swap->stack_a[swap->len - 1]))
+		sa(swap);
+	else if (swap->stack_a[swap->top_a] < swap->stack_a[swap->top_a + 1] \
 		&& swap->stack_a[swap->top_a] > swap->stack_a[swap->len - 1])
-			rra(swap);
-		else if (swap->stack_a[swap->top_a] < swap->stack_a[swap->top_a + 1] \
+		rra(swap);
+	else if (swap->stack_a[swap->top_a] < swap->stack_a[swap->top_a + 1] \
 		&& swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->len - 1])
-		{
-			rra(swap);
-			sa(swap);
-		}
-		else if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1] && \
-			swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->len - 1])
-		{
-			ra(swap);
-			sa(swap);
-		}
-		else if (swap->stack_a[swap->top_a] > swap->stack_a[swap->len - 1] && \
+		sort_min3(swap);
+	else if (swap->stack_a[swap->top_a] > swap->stack_a[swap->top_a + 1] \
+		&& swap->stack_a[swap->top_a + 1] > swap->stack_a[swap->len - 1])
+		sort_min2(swap);
+	else if (swap->stack_a[swap->top_a] > swap->stack_a[swap->len - 1] && \
 		swap->stack_a[swap->len - 1] > swap->stack_a[swap->top_a + 1])
-			ra(swap);
-	}
+		ra(swap);
 	swap->sorted = swap->len - swap->top_a;
 }
 
