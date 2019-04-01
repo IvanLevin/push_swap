@@ -51,6 +51,7 @@ void		free_struct(t_swap *swap)
 	free(swap->stack_a);
 	free(swap->stack_b);
 	free(swap->uns_mas);
+	free(swap->cmnd);
 }
 
 void		find_max_min(t_swap *swap)

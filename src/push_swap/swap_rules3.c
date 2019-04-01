@@ -55,9 +55,9 @@ void		rrb(t_swap *sw_b)
 	}
 	sw_b->stack_b[sw_b->top_b] = temp;
 	sw_b->score++;
+    ft_strcpy(sw_b->cmnd[sw_b->temp_cmd++], "rrb");
 //	if (sw_b->checker == 0)
 //		ft_printf("rrb\n");
-	ft_strcpy(sw_b->cmnd[sw_b->temp_cmd++], "rrb");
 	if (sw_b->flag_v == 1)
 		print_stacks(sw_b);
 }

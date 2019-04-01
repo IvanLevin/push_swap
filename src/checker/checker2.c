@@ -38,6 +38,8 @@ static	int		mem_allocation_check(t_swap *swap)
 		return (-1);
 	if (!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
+    if (!(swap->cmnd = (char(*)[4])malloc(sizeof(char *) * swap->len * swap->len)))
+        return (-1);
 	return (0);
 }
 

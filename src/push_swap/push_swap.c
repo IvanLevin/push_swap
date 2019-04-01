@@ -69,6 +69,59 @@ int				create_arr(int argc, char **argv, t_swap *swap)
 	return (0);
 }
 
+void            move_cmd(t_swap *swap)
+{
+    while (swap->cmnd[swap->temp_cmd] && swap->cmnd[swap->temp_cmd + 2] && \
+        ft_strequ(swap->cmnd[swap->temp_cmd], "end") != 1 && ft_strequ(swap->cmnd[swap->temp_cmd] , "") != 1)
+    {
+        if (swap->cmnd[swap->temp_cmd] && swap->cmnd[swap->temp_cmd + 2])
+            ft_strcpy(swap->cmnd[swap->temp_cmd], swap->cmnd[swap->temp_cmd + 2]);
+        swap->temp_cmd++;
+    }
+    swap->temp_cmd = 0;
+}
+
+
+void            change_cmd_list(t_swap *swap)
+{
+    swap->temp_cmd = 0;
+//    char    buf[4];
+
+    while (swap->cmnd[swap->temp_cmd] && swap->cmnd[swap->temp_cmd + 1] && \
+        (ft_strequ(swap->cmnd[swap->temp_cmd], "end") != 1 && ft_strequ(swap->cmnd[swap->temp_cmd] , "") != 1))
+    {
+        if (swap->cmnd[swap->temp_cmd] && swap->cmnd[swap->temp_cmd + 1] && \
+            ft_strequ(swap->cmnd[swap->temp_cmd], "rra") == 1 && ft_strequ(swap->cmnd[swap->temp_cmd + 1], "ra") == 1)
+            move_cmd(swap);
+        if (swap->cmnd[swap->temp_cmd] && swap->cmnd[swap->temp_cmd + 1] && \
+            ft_strequ(swap->cmnd[swap->temp_cmd], "ra") == 1 && ft_strequ(swap->cmnd[swap->temp_cmd + 1], "rra") == 1)
+            move_cmd(swap);
+        if (swap->cmnd[swap->temp_cmd] && swap->cmnd[swap->temp_cmd + 1] && \
+            ft_strequ(swap->cmnd[swap->temp_cmd], "rb") == 1 && ft_strequ(swap->cmnd[swap->temp_cmd + 1], "rrb") == 1)
+            move_cmd(swap);
+        if (swap->cmnd[swap->temp_cmd] && swap->cmnd[swap->temp_cmd + 1] && \
+            ft_strequ(swap->cmnd[swap->temp_cmd], "rrb") == 1 && ft_strequ(swap->cmnd[swap->temp_cmd + 1], "rb") == 1)
+            move_cmd(swap);
+        if (swap->cmnd[swap->temp_cmd] && swap->cmnd[swap->temp_cmd + 1] && \
+            ft_strequ(swap->cmnd[swap->temp_cmd], "pb") == 1 && ft_strequ(swap->cmnd[swap->temp_cmd + 1], "pa") == 1)
+            move_cmd(swap);
+        if (swap->cmnd[swap->temp_cmd] && swap->cmnd[swap->temp_cmd + 1] && \
+            ft_strequ(swap->cmnd[swap->temp_cmd], "pa") == 1 && ft_strequ(swap->cmnd[swap->temp_cmd + 1], "pb") == 1)
+            move_cmd(swap);
+        if (swap->cmnd[swap->temp_cmd] && swap->cmnd[swap->temp_cmd + 1] && \
+            ft_strequ(swap->cmnd[swap->temp_cmd], "pa") == 1 && ft_strequ(swap->cmnd[swap->temp_cmd + 1], "pb") == 1)
+            move_cmd(swap);
+        swap->temp_cmd++;
+    }
+    swap->temp_cmd = 0;
+    while (ft_strequ(swap->cmnd[swap->temp_cmd], "end") != 1 && ft_strequ(swap->cmnd[swap->temp_cmd] , "") != 1)
+    {
+        if (ft_strequ(swap->cmnd[swap->temp_cmd], "np") != 1)
+            printf("%s\n", swap->cmnd[swap->temp_cmd]);
+        swap->temp_cmd++;
+    }
+}
+
 void			push_swap2(int argc, char **argv, t_swap *swap)
 {
 	int			i;
@@ -87,9 +140,7 @@ void			push_swap2(int argc, char **argv, t_swap *swap)
 		}
 	}
 	algorithm_sort(swap);
-	swap->temp_cmd = 0;
-	while (ft_strequ(swap->cmnd[swap->temp_cmd], "end") != 1)
-		printf("%s\n", swap->cmnd[swap->temp_cmd++]);
+	change_cmd_list(swap);
 	free_struct(swap);
 	free(swap);
 }
