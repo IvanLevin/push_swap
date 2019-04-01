@@ -2,7 +2,7 @@ NAMEP = push_swap
 
 NAMEC = checker
 
-INC_DIR = ./inc/push_swap.h
+INC_DIR = inc/
 
 LIB_DIR = ./lib/ft_printf/libftprintf.a
 
