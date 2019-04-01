@@ -19,6 +19,7 @@ static	void	initialize_swap(t_swap *swap)
 	i = 0;
 	while (i < num_of_covers(swap))
 		swap->uns_mas[i++] = 0;
+	swap->temp_cmd = 0;
 	swap->pivot = 0;
 	swap->score = 0;
 	swap->top_a = 0;
@@ -38,6 +39,8 @@ int				mem_allocation(t_swap *swap)
 	if (!(swap->stack_b = (int *)malloc(sizeof(int) * swap->len)))
 		return (-1);
 	if (!(swap->uns_mas = (int *)malloc(sizeof(int) * num_of_covers(swap))))
+		return (-1);
+	if (!(swap->cmnd = (char(*)[4])malloc(sizeof(char *) * swap->len * swap->len)))
 		return (-1);
 	return (0);
 }
@@ -84,6 +87,9 @@ void			push_swap2(int argc, char **argv, t_swap *swap)
 		}
 	}
 	algorithm_sort(swap);
+	swap->temp_cmd = 0;
+	while (ft_strequ(swap->cmnd[swap->temp_cmd], "end") != 1)
+		printf("%s\n", swap->cmnd[swap->temp_cmd++]);
 	free_struct(swap);
 	free(swap);
 }

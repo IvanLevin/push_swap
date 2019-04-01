@@ -84,4 +84,6 @@ void		algorithm_sort(t_swap *swap)
 		sort_insert(swap);
 	swap->pivot = swap_pivot(swap);
 	swap_quick_sort(swap);
+	ft_strcpy(swap->cmnd[swap->temp_cmd], "end");
+//	swap->cmnd + swap->temp_cmd = NULL;
 }

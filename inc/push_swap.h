@@ -11,7 +11,6 @@
 
 typedef struct s_swap
 {
-	char        **cmds;
 	int         temp_cmd;
 	int			*stack_a;
 	int 		*stack_b;
@@ -29,6 +28,7 @@ typedef struct s_swap
 	int         checker;
 	int         flag;
 	int         flag_v;
+	char        (*cmnd)[4];
 }				t_swap;
 
 int 		    mem_allocation(t_swap *swap);
