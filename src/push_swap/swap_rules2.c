@@ -26,11 +26,7 @@ void		ra(t_swap *sw_a)
 	}
 	sw_a->stack_a[i] = temp;
 	sw_a->score++;
-//	if (sw_a->checker == 0)
-//		ft_printf("ra\n");
 	ft_strcpy(sw_a->cmnd[sw_a->temp_cmd++], "ra");
-	if (sw_a->flag_v == 1)
-		print_stacks(sw_a);
 }
 
 void		rb(t_swap *sw_b)
@@ -48,10 +44,6 @@ void		rb(t_swap *sw_b)
 	sw_b->stack_b[i] = temp;
 	sw_b->score++;
 	ft_strcpy(sw_b->cmnd[sw_b->temp_cmd++], "rb");
-//	if (sw_b->checker == 0)
-//		ft_printf("rb\n");
-	if (sw_b->flag_v == 1)
-		print_stacks(sw_b);
 }
 
 void		rr(t_swap *swap)
@@ -75,11 +67,7 @@ void		rr(t_swap *swap)
 	swap->stack_a[i] = temp1;
 	swap->stack_b[j] = temp2;
 	swap->score++;
-//	if (swap->checker == 0)
-//		ft_printf("rr\n");
 	ft_strcpy(swap->cmnd[swap->temp_cmd++], "rr");
-	if (swap->flag_v == 1)
-		print_stacks(swap);
 }
 
 void		rra(t_swap *sw_a)
@@ -96,9 +84,5 @@ void		rra(t_swap *sw_a)
 	}
 	sw_a->stack_a[sw_a->len - i] = temp;
 	sw_a->score++;
-//	if (sw_a->checker == 0)
-//		ft_printf("rra\n");
 	ft_strcpy(sw_a->cmnd[sw_a->temp_cmd++], "rra");
-	if (sw_a->flag_v == 1)
-		print_stacks(sw_a);
 }

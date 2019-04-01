@@ -39,13 +39,12 @@ void		new_pivot_b(t_swap *swap)
 
 	j = 0;
 	sort = NULL;
-	if (swap->temp > 0)
-	sort = (int *)malloc(sizeof(int) * (swap->uns_mas[swap->temp] - \
-		swap->uns_mas[swap->temp - 1]));
+	if (TMP > 0)
+		sort = (int *)malloc(sizeof(int) * (UM[TMP] - UM[TMP - 1]));
 	i = swap->top_b;
-	if (swap->temp > 0)
-		while (i < swap->top_b + swap->uns_mas[swap->temp] - \
-			swap->uns_mas[swap->temp - 1])
+	if (TMP > 0)
+		while (i < swap->top_b + swap->uns_mas[TMP] - \
+			swap->uns_mas[TMP - 1])
 		{
 			if (i < swap->len)
 				sort[j++] = swap->stack_b[i];
@@ -54,8 +53,7 @@ void		new_pivot_b(t_swap *swap)
 			i++;
 		}
 	if (swap->temp > 0)
-		sort = ft_selection_sort(sort, swap->uns_mas[swap->temp] - \
-			swap->uns_mas[swap->temp - 1]);
+		sort = ft_selection_sort(sort, UM[TMP] - UM[TMP - 1]);
 	if (j != 0)
 		swap->pivot = sort[j / 2];
 	free(sort);

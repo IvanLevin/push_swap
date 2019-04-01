@@ -34,11 +34,7 @@ void		rrr(t_swap *sw_a, t_swap *sw_b)
 	}
 	sw_b->stack_b[sw_b->len - i] = temp;
 	sw_a->score++;
-//	if (sw_b->checker == 0)
-//		ft_printf("rrr\n");
 	ft_strcpy(sw_a->cmnd[sw_a->temp_cmd++], "rrr");
-	if (sw_a->flag_v == 1)
-		print_stacks(sw_a);
 }
 
 void		rrb(t_swap *sw_b)
@@ -55,9 +51,5 @@ void		rrb(t_swap *sw_b)
 	}
 	sw_b->stack_b[sw_b->top_b] = temp;
 	sw_b->score++;
-    ft_strcpy(sw_b->cmnd[sw_b->temp_cmd++], "rrb");
-//	if (sw_b->checker == 0)
-//		ft_printf("rrb\n");
-	if (sw_b->flag_v == 1)
-		print_stacks(sw_b);
+	ft_strcpy(sw_b->cmnd[sw_b->temp_cmd++], "rrb");
 }
