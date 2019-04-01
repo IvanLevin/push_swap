@@ -79,7 +79,11 @@ void		algorithm_sort(t_swap *swap)
 	if (swap->len == 1)
 		return ;
 	else if (swap->len < 4)
+	{
 		sort_min(swap);
+		if (!check_sort(swap))
+			return ;
+	}
 	else if (swap->len == 4)
 		sort_insert(swap);
 	swap->pivot = swap_pivot(swap);

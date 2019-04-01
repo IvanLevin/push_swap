@@ -19,6 +19,9 @@ static	void	initialize_swap(t_swap *swap)
 	i = 0;
 	while (i < num_of_covers(swap))
 		swap->uns_mas[i++] = 0;
+	i = 0;
+	while (i < swap->len * swap->len)
+		ft_bzero(swap->cmnd[i++], 4);
 	swap->temp_cmd = 0;
 	swap->pivot = 0;
 	swap->score = 0;
@@ -101,7 +104,10 @@ void			push_swap(int argc, char **argv)
 		return ;
 	swap->flag_v = 0;
 	if (argc == 1)
+	{
+		free(swap);
 		return ;
+	}
 	if (ft_strcmp(argv[argc - 1], "-v") == 0)
 	{
 		argc -= 1;

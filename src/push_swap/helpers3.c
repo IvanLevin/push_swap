@@ -77,9 +77,13 @@ void	split_stack_b(t_swap *swap)
 	new_pivot_b(swap);
 	while (1)
 	{
-		if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] == 3)
+		if (swap->uns_mas[swap->temp] && swap->uns_mas[swap->temp - 1] && \
+			swap->temp > 1 && \
+			swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] == 3)
 			sort_toa3(swap);
-		if (swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] <= 4)
+		if (swap->temp > 1 && swap->uns_mas[swap->temp] && \
+			swap->uns_mas[swap->temp - 1] && \
+			swap->uns_mas[swap->temp] - swap->uns_mas[swap->temp - 1] <= 4)
 			sort_toa(swap);
 		new_pivot_b(swap);
 		if (b_del(swap) == 1)

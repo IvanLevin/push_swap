@@ -48,7 +48,7 @@ push_swap:
 	$(CC) $(CFLAGS) $(SRC_DIR) -I$(INC_DIR)
 	$(CC) $(OBJ) -L. $(LIB_DIR) -I$(INC_DIR) -o $(NAMEP)
 	@make clean
-
+	@make fclean -C lib/ft_printf
 checker:
 	$(CC) $(CFLAGS) $(SRC_CHECK) -I$(INC_DIR)
 	$(CC) $(OBJ) -L. $(LIB_DIR) -I$(INC_DIR) -o $(NAMEC)
