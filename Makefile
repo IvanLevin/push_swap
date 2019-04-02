@@ -35,7 +35,7 @@ CFLAGS = -Wall -Wextra -Werror -c
 
 FT_PRINTF = ./lib/ft_printf
 
-GREEN = \033[31m
+GREEN = \033[32m
 
 RED = \033[31m
 
@@ -45,19 +45,22 @@ all: $(NAMEP) $(NAMEC)
 
 push_swap:
 	@make -C lib/ft_printf
-	$(CC) $(CFLAGS) $(SRC_DIR) -I$(INC_DIR)
-	$(CC) $(OBJ) -L. $(LIB_DIR) -I$(INC_DIR) -o $(NAMEP)
+	@$(CC) $(CFLAGS) $(SRC_DIR) -I$(INC_DIR)
+	@$(CC) $(OBJ) -L. $(LIB_DIR) -I$(INC_DIR) -o $(NAMEP)
+	@echo "$(GREEN) YSHA PETUH$(END)"
 	@make clean
-	@make fclean -C lib/ft_printf
+
 checker:
-	$(CC) $(CFLAGS) $(SRC_CHECK) -I$(INC_DIR)
-	$(CC) $(OBJ) -L. $(LIB_DIR) -I$(INC_DIR) -o $(NAMEC)
+	@$(CC) $(CFLAGS) $(SRC_CHECK) -I$(INC_DIR)
+	@$(CC) $(OBJ) -L. $(LIB_DIR) -I$(INC_DIR) -o $(NAMEC)
 	@make clean
 
 clean:
+	@make clean -C $(FT_PRINTF)
 	@rm -f $(OBJ)
 
 fclean: clean
+	@make fclean -C $(FT_PRINTF)
 	@rm $(NAMEP)
 	@rm $(NAMEC)
 
